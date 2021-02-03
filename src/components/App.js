@@ -1,9 +1,11 @@
 import React from 'react';
 
+import UsersContainer from './UsersContainer'
+
 const App = () => {
     return (
         <div>
-            <h1>Hello World!</h1>
+            <UsersContainer />
         </div>
     )
 }
