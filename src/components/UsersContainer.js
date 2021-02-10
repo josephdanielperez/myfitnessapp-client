@@ -1,6 +1,7 @@
 // this will be my container = data + methods
 
 import React, { Component } from 'react'
+import { Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import { fetchUsers } from '../actions/usersActions'
@@ -15,10 +16,10 @@ class UsersContainer extends Component {
 
     render() {
         return (
-        <div>
-            <h1>Users Container</h1>
-            <UsersForm />
-        </div>
+            <div>
+                <UsersForm />
+                <UsersList />
+            </div>
         );
     }
 }
