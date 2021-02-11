@@ -31,13 +31,13 @@ class UsersForm extends Component {
                 <h1>Create An Account</h1>
                 <form onSubmit={this.handleSubmit}>
 
-                    <label>Username:</label>
+                    <label>Username: </label>
                     <input type='text' value={this.state.username} onChange={this.handleChange} name='username' />
                     < br />< br />
-                    <label>Name:</label>
+                    <label>Name: </label>
                     <input type='text' value={this.state.name} onChange={this.handleChange} name='name' />
                     < br />< br />
-                    <label>Password:</label>
+                    <label>Password: </label>
                     <input type='password' value={this.state.password} onChange={this.handleChange} name='password' />
                     < br />< br />
                     <input type='submit' value='create account' />

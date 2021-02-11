@@ -3,78 +3,97 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import { login } from '../actions/usersActions'
+import { updateLoginForm } from '../actions/loginForm'
 
 class Login extends Component {
     state = {
         username: '',
         password: '',
-        submitted: false,
+        submitted: false
     };
 
-    handleOnChange = e => {
-        e.persist();
+    handleChange = event => {
+        event.persist();
+        const { name, value} = event.target
+        this.setState({ [name]: value})
+    };
+
+    handleClick = event => {
         this.setState({
-            [e.target.name]: e.target.value
-        });
+            submitted: true
+        })
     };
 
-    handleOnClick = e => {
-        this.setState({
-            submitted: true,
-        });
-    };
+    handleSubmit = event => {
+        event.preventDefault()
 
-    handleOnSubmit = e => {
-        e.preventDefault();
-        this.props.login(this.state, this.props.history);
+        fetch('http://localhost:3000/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+            },
+            body: JSON.stringify({
+                username: this.state.username,
+                password: this.state.password
+            })
+        })
+        .then(resp => console.log(resp))
+        .then(user => {
+            if (user.error) {
+                alert(user.error)
+                console.log('failure', user)
+            } else {
+                console.log('success', user)
+            }
+        })
+        .catch(console.log())
+        login(this.state)
+        console.log('info', this.state)
     };
 
     render() {
         return (
             <div>
-                <h1 className='header'>Log In</h1>
-                <br />
-                <div className='form user-form'>
-                    <form onSubmit={this.handleOnSubmit}>
-                        <div className='form-group'>
-                            <label htmlFor='username'>Username: </label>
-                            <input
-                                type='text'
-                                className={`form-control ${!!this.state.submitted && this.state.username === '' ? 'is-invalid' : null}`}
-                                name='username'
-                                id='username'
-                                value={this.state.username}
-                                onChange={this.handleOnChange}
-                            />
-                            <div className='invalid-feedback'>
-                                Username required
-                            </div>
-                        </div>
-                        <div className='form-group'>
-                            <label htmlFor='password'>Password: </label>
-                            <input
-                                type='password'
-                                className={`form-control ${!!this.state.submitted && this.state.password === '' ? 'is-invalid' : null}`}
-                                name='password'
-                                id='password'
-                                value={this.state.password}
-                                onChange={this.handleOnChange}
-                            />
-                            <div className='invalid-feedback'>
-                                Password required
-                            </div>
-                        </div>
-                        <br />
-                        <input type='submit' className='btn btn-primary-fill' value='Log In' onClick={this.handleOnClick} />
-                    </form>
+                <h1>Log In</h1>
+                <form onSubmit={this.handleSubmit}>
+                    <label>Username: </label>
+                    <input
+                        type='text'
+                        name='username'
+                        id='username'
+                        value={this.state.username}
+                        onChange={this.handleChange}
+                        required
+                    />
+                    <br />
 
-                </div>
+                    <label>Password: </label>
+                    <input
+                        type='password'
+                        name='password'
+                        id='password'
+                        value={this.state.password}
+                        onChange={this.handleChange}
+                        required
+                    />
+                    <br />
+
+                    <input type='submit' className='btn' value='Log In' onClick={this.handleClick} />
+                </form>
+
                 <div className='note'>
                     <p>No account? Sign up <Link to='/signup'>here</Link>.</p>
                 </div>
             </div>
         );
-    };
+    }
 };
 
-export default connect(null, { login })(Login);
+const mapStateToProps = state => {
+    return {
+        loginData: state.loginForm
+    }
+}
+
+export default Login;
