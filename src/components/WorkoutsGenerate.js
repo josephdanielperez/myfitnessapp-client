@@ -19,10 +19,10 @@ class WorkoutsGenerate extends Component {
         this.setState({ [name]: value })
     }
 
-    handleSubmit = e => {
+    handleSubmit = async e => {
         e.preventDefault()
 
-        this.setState({ exercises: filterExercises(this.state) });
+        await this.setState({ exercises: filterExercises(this.state) });
         console.log(this.state);
     }
 
