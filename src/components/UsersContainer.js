@@ -1,5 +1,3 @@
-// this will be my container = data + methods
-
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 

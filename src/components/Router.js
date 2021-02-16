@@ -8,6 +8,8 @@ import UsersForm from './UsersForm'
 import WorkoutsForm from './WorkoutsForm'
 import WorkoutsGenerate from './WorkoutsGenerate'
 import WorkoutsList from './WorkoutsList'
+import ExercisesContainer from './ExercisesContainer'
+import GeneratedContainer from './GeneratedContainer'
 
 const Router = () => {
     return (
@@ -20,6 +22,8 @@ const Router = () => {
                 <Route path='/workouts/new' component={WorkoutsForm} />
                 <Route path='/workouts/generate' component={WorkoutsGenerate} />
                 <Route path='/users' component={UsersContainer} />
+                <Route path='/generated' component={ExercisesContainer} />
+                <Route path='/test' component={GeneratedContainer} />
             </Switch>
         </div>
     );
