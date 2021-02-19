@@ -8,6 +8,7 @@ import { fetchSplits, filterExercises } from '../actions/workoutsActions'
 class WorkoutsContainer extends Component {
 
     state = {
+        loading: false,
         toggle: false,
         split: '1',
         length: '3',
@@ -31,19 +32,40 @@ class WorkoutsContainer extends Component {
         e.preventDefault();
 
         this.setState({
-            ...this.state,
             exercises: filterExercises(this.state),
+            loading: !this.state.loading
+        });
+        setTimeout(this.toggleStateHandler, 500);
+    }
+
+    toggleStateHandler = (e) => {
+        this.setState({
+            loading: !this.state.loading,
             toggle: !this.state.toggle
         })
     }
   
     render() {
-        return(
-            <div>
-                <WorkoutsForm state={this.state} changeStateHandler={this.changeStateHandler} submitStateHandler={this.submitStateHandler} />
-                <Workout state={this.state} changeStateHandler={this.changeStateHandler} submitStateHandler={this.submitStateHandler} />
-            </div>
-        )
+        if (this.state.loading) {
+            return(
+                <div>
+                    <p>loading...</p>
+                </div>
+            )
+        }
+        else if (!this.state.toggle) {
+            return(
+                <div>
+                    <WorkoutsForm state={this.state} changeStateHandler={this.changeStateHandler} submitStateHandler={this.submitStateHandler} />
+                </div>
+            )
+        } else {
+            return(
+                <div>
+                    <Workout state={this.state} />
+                </div>
+            )
+        }
     }
 }
   
