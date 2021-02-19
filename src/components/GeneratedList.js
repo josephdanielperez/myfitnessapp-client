@@ -1,17 +1,16 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { BrowserRouter as Router, Link} from 'react-router-dom'
 
-const GeneratedList = ({ exercises }) => {
+const GeneratedList = (props) => {
     return (
-        <div>
-            <h1>Exercises List</h1>
-            {exercises.map(exercise => <ul><li key={exercise.id}>{exercise.name}</li></ul>)}
+        <div class='workout'>
+            <ul>
+                <li class='workout-name'>{props.exercises.name}</li>
+                <button class='complete-btn'>complete exercise</button>
+            </ul>
+            <button>complete workout</button>
         </div>
     );
 }
 
-const mapStateToProps = state => {
-    return { exercises: state.exercises }
-}
-
-export default connect(mapStateToProps)(GeneratedList);
+export default GeneratedList;

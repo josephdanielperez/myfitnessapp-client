@@ -26,6 +26,14 @@ export const fetchSplits = async () => {
     return resp
 }
 
+// export const fetchSplits = () => {
+//     return dispatch => {
+//         return fetch('http://localhost:3000/splits')
+//         .then(resp => resp.json())
+//         .then(splits => dispatch({ type: 'FETCH_SPLITS', payload: splits }))
+//     }
+// }
+
 export const fetchExercises = async () => {
     const data = await fetch('http://localhost:3000/exercises', {
         method: 'GET',
@@ -56,16 +64,3 @@ export const filterExercises = (state) => {
     })
     return data
 }
-
-// function generateList(list, length) {
-//     let currentIndex = list.length, temporaryValue, randomIndex;
-//     while (0 !== currentIndex) {
-//         randomIndex = Math.floor(Math.random() * currentIndex);
-//         currentIndex -= 1;
-
-//         temporaryValue = list[currentIndex];
-//         list[currentIndex] = list[randomIndex];
-//         list[randomIndex] = temporaryValue;
-//     }
-//     return list.slice(0, length)
-// }

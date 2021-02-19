@@ -1,5 +1,3 @@
-import { resetLoginForm } from './loginForm.js'
-
 export const setCurrentUser = user => {
     return {
         type: 'SET_CURRENT_USER',

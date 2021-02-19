@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import GeneratedList from './GeneratedList'
+import Workout from './Workout'
 import { fetchSplits, filterExercises } from '../actions/workoutsActions'
 
-class WorkoutsGenerate extends Component {
+class WorkoutsForm extends Component {
 
     state = {
-        loading: true,
+        toggle: false,
         split: '1',
         length: '3',
         splits: [],
@@ -25,14 +24,17 @@ class WorkoutsGenerate extends Component {
 
         await this.setState({ exercises: filterExercises(this.state) });
         console.log(this.state.exercises);
+        this.setState({ toggle: !this.state.toggle })
+        console.log(this.state.toggle)
     }
 
     componentDidMount() {
         fetchSplits()
-        .then(data => this.setState({ splits: data, loading: false }))
+        .then(data => this.setState({ splits: data }))
     }
 
     render() {
+        if (!this.state.toggle) {
         return (
             <div>
                 <h1>Generate A Workout</h1>
@@ -40,7 +42,7 @@ class WorkoutsGenerate extends Component {
 
                     <label>Select a split: </label>
                     <select value={this.state.split} onChange={this.handleChange} name='split'>
-                        { this.state.splits.map(split => <option value={split.id} key={split.id}>{split.name}</option>)}
+                        { this.state.splits.map(split => <option value={split.id} key={split.id}>{split.name}</option>) }
                     </select>
                     < br />< br />
                     
@@ -59,11 +61,21 @@ class WorkoutsGenerate extends Component {
                 <div className='note'>
                     <p>Have a workout already created? Find it <Link to='/workouts'>here</Link>.</p>
                 </div>
-                
+
+                {/* <ul>
+                    { this.state.exercises.map(exercise => <li value={exercise.name} key={exercise.id}>{exercise.name}</li>)}
+                </ul> */}
+
             </div>
         )
+        } else {
+            return(
+            <div>
+                <Workout exercises={this.state.exercises} />
+            </div>
+            )
+        }
     }
 }
 
-// is connect needed? //
-export default connect(null, { filterExercises })(WorkoutsGenerate);
+export default WorkoutsForm;
