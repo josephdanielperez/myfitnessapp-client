@@ -33,7 +33,7 @@ class Workout extends Component {
                 <br />
 
                 <div className='finish-button'>
-                    <button type='submit' className='btn hide' id='finish-workout'>finish workout</button>
+                    <button onClick={this.props.completeWorkoutHandler} className='btn hide' id='finish-workout'>finish workout</button>
                 </div>
             </div>
         )

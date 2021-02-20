@@ -1,23 +1,44 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 
-import { fetchExercises } from '../actions/workoutsActions'
-import UsersForm from './UsersForm'
-import GeneratedList from './GeneratedList'
+import { fetchSplits, filterExercises } from '../actions/workoutsActions'
 
 class ExercisesContainer extends Component {
 
-    componentDidMount() {
-        this.props.fetchExercises()
-    };
+    state = {
+        loading: false,
+        toggle: false,
+        splits: [],
+        exercises: [],
+    }
 
+    componentDidMount() {
+        fetchSplits()
+        .then(data => this.setState({ splits: data }))
+    }
+  
     render() {
-        return (
-            <div>
-                <GeneratedList />
-            </div>
-        );
+        if (this.state.loading) {
+            return(
+                <div>
+                    <p>loading...</p>
+                </div>
+            )
+        }
+        else if (!this.state.toggle) {
+            return(
+                <div>
+                    spalits
+                </div>
+            )
+        } else {
+            return(
+                <div>
+                    spalits
+                </div>
+            )
+        }
     }
 }
-
-export default connect(null, { fetchExercises })(ExercisesContainer);
+  
+export default ExercisesContainer;

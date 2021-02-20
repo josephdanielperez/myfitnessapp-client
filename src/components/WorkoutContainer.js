@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 // import { connect } from 'react-redux'
-import WorkoutsForm from './WorkoutsForm'
+import WorkoutForm from './WorkoutForm'
 import Workout from './Workout'
 
 import { fetchSplits, filterExercises } from '../actions/workoutsActions'
 
-class WorkoutsContainer extends Component {
+class WorkoutContainer extends Component {
 
     state = {
         loading: false,
@@ -15,6 +15,16 @@ class WorkoutsContainer extends Component {
         splits: [],
         exercises: [],
     }
+
+    // IF SAVING TO LOCAL STORAGE, USE THIS //
+    // initialState = () => ({
+    //     loading: false,
+    //     toggle: false,
+    //     split: '1',
+    //     length: '3',
+    //     splits: [],
+    //     exercises: [],
+    // })
 
     componentDidMount() {
         fetchSplits()
@@ -35,14 +45,22 @@ class WorkoutsContainer extends Component {
             exercises: filterExercises(this.state),
             loading: !this.state.loading
         });
-        setTimeout(this.toggleStateHandler, 500);
+        setTimeout(this.toggleState, 500);
     }
 
-    toggleStateHandler = (e) => {
+    toggleState = (e) => {
         this.setState({
             loading: !this.state.loading,
             toggle: !this.state.toggle
         })
+    }
+
+    completeWorkoutHandler = (e) => {
+        e.preventDefault();
+
+        alert('Great job today! See you for another workout soon!');
+        // this.setState(this.initialState);
+        window.location.reload();
     }
   
     render() {
@@ -56,17 +74,17 @@ class WorkoutsContainer extends Component {
         else if (!this.state.toggle) {
             return(
                 <div>
-                    <WorkoutsForm state={this.state} changeStateHandler={this.changeStateHandler} submitStateHandler={this.submitStateHandler} />
+                    <WorkoutForm state={this.state} changeStateHandler={this.changeStateHandler} submitStateHandler={this.submitStateHandler} />
                 </div>
             )
         } else {
             return(
                 <div>
-                    <Workout state={this.state} />
+                    <Workout state={this.state} completeWorkoutHandler={this.completeWorkoutHandler} />
                 </div>
             )
         }
     }
 }
   
-export default WorkoutsContainer;
+export default WorkoutContainer;

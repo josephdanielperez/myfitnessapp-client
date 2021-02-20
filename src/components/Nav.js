@@ -1,13 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Nav = () =>
 
     <nav>
-        <li><a>Home</a></li>
-        <li><a>Workout</a></li>
-        <li><a>Splits</a></li>
-        <li><a>Exercises</a></li>
-        <li><a>Reviews</a></li>
+        <li><Link to='/'>Home</Link></li>
+        <li><Link to='/workout'>Workout</Link></li>
+        <li><Link to='/exercises'>Exercises</Link></li>
+        <li>Reviews</li>
     </nav>
 
 export default Nav

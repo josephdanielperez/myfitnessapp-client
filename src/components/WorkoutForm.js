@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-class WorkoutsForm extends Component {
+class WorkoutForm extends Component {
     
     render() {
         return (
@@ -38,4 +38,4 @@ class WorkoutsForm extends Component {
 
 }
 
-export default WorkoutsForm;
+export default WorkoutForm;
