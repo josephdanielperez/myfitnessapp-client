@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
-// import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
-import { fetchSplits, filterExercises } from '../actions/workoutsActions'
+import { fetchSplits } from '../actions/workoutsActions'
 
 class ExercisesContainer extends Component {
 
     state = {
         loading: false,
-        toggle: false,
         splits: [],
         exercises: [],
     }
@@ -25,16 +24,13 @@ class ExercisesContainer extends Component {
                 </div>
             )
         }
-        else if (!this.state.toggle) {
+        else {
             return(
                 <div>
-                    spalits
-                </div>
-            )
-        } else {
-            return(
-                <div>
-                    spalits
+                    <h1>Splits</h1>
+                    <ul>
+                        { this.state.splits.map(split => <li key={split.id}><Link to={`/exercises/${split.id}`}>{split.name}</Link></li>) }
+                    </ul>
                 </div>
             )
         }

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 
 class WorkoutForm extends Component {
     
@@ -27,11 +26,6 @@ class WorkoutForm extends Component {
                     <input type='submit' value='generate workout' className='hide' />
 
                 </form>
-
-                <div className='note'>
-                    <p>Have a workout already created? Find it <Link to='/workouts'>here</Link>.</p>
-                </div>
-
             </div>
         )
     }
