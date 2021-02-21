@@ -1,19 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-// import { filterExercises } from '../actions/workoutsActions'
-// import { fetchExercises } from '../actions/workoutsActions';
+// import { fetchSplitExercises, filterExercises } from '../actions/workoutsActions'
 
 class Exercises extends Component {
 
     state = {
-        exercises: [],
+        exercises: []
     }
     
     componentDidMount() {
-        this.filterExercises();
+        this.fetchSplitExercises()
     }
 
-    filterExercises = () => {
+    fetchSplitExercises = () => {
         fetch(`http://localhost:3000/splits/${this.props.match.params.slug}`)
         .then(resp => resp.json())
         .then(split => {

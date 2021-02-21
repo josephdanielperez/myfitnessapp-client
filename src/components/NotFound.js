@@ -1,12 +1,14 @@
-import React from 'react';
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Home = () =>
 
     <div>
         <p>sorry, your page was not found...</p>
         <br /><br /><br />
-        <p>Head home below!</p>
-        <button onClick={() => window.location.href='/'}>home</button>
+        {/* below is less snappy than link due to reloading window */}
+        {/* <button onClick={() => window.location.href='/'}>home</button> */}
+        <Link to='/'><button>return home</button></Link>
     </div>
 
 
