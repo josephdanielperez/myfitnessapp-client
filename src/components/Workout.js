@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class Workout extends Component {
 
@@ -24,7 +24,7 @@ class Workout extends Component {
                 <ul>
                     { this.props.state.exercises.map(exercise =>
                         <div className='workout' key={exercise.id}>
-                            <li className='workout-item' value={exercise.name}>{exercise.name}</li>
+                            <li className='workout-item' value={exercise.name}><a target='_blank' rel='noreferrer' href={exercise.url}>{exercise.name}</a></li>
                             <button className='complete-btn' onClick={this.completeHandler}>complete</button>
                         </div>
                     )}

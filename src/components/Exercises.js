@@ -18,14 +18,18 @@ class Exercises extends Component {
         .then(split => {
             this.setState({ exercises: split.exercises });
         })
-    };
+    }
 
     render() {
         return(
             <div>
                 <h1>Exercises:</h1>
                 <ul>
-                    { this.state.exercises.map(exercise => <li key={exercise.id}>{exercise.name}</li>)}
+                    { this.state.exercises.map(exercise =>
+                        <div key={exercise.id}>
+                            <li><a target='_blank' rel='noreferrer' href={exercise.url}>{exercise.name}</a></li>
+                        </div>
+                    )}
                 </ul>
             </div>
         )
