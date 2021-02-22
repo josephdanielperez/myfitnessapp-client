@@ -23,7 +23,7 @@ class WorkoutForm extends Component {
                     </select>
                     < br />< br />
 
-                    <input type='submit' value='generate workout' className='hide' />
+                    <input type='submit' value='generate workout' className='btn' />
 
                 </form>
             </div>

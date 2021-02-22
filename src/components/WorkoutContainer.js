@@ -66,21 +66,27 @@ class WorkoutContainer extends Component {
     render() {
         if (this.state.loading) {
             return(
-                <div>
-                    <p>loading...</p>
+                <div id='content'>
+                    <div id='container'>
+                        <p>loading...</p>
+                    </div>
                 </div>
             )
         }
         else if (!this.state.toggle) {
             return(
-                <div>
-                    <WorkoutForm state={this.state} changeStateHandler={this.changeStateHandler} submitStateHandler={this.submitStateHandler} />
+                <div id='content'>
+                    <div id='container'>
+                        <WorkoutForm state={this.state} changeStateHandler={this.changeStateHandler} submitStateHandler={this.submitStateHandler} />
+                    </div>
                 </div>
             )
         } else {
             return(
-                <div>
-                    <Workout state={this.state} completeWorkoutHandler={this.completeWorkoutHandler} />
+                <div id='content'>
+                    <div id='container'>
+                        <Workout state={this.state} completeWorkoutHandler={this.completeWorkoutHandler} />
+                    </div>
                 </div>
             )
         }

@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheck } from '@fortawesome/free-solid-svg-icons'
 
 class Workout extends Component {
 
@@ -25,7 +27,7 @@ class Workout extends Component {
                     { this.props.state.exercises.map(exercise =>
                         <div className='workout' key={exercise.id}>
                             <li className='workout-item' value={exercise.name}><a target='_blank' rel='noreferrer' href={exercise.url}>{exercise.name}</a></li>
-                            <button className='complete-btn' onClick={this.completeHandler}>complete</button>
+                            <button className='complete-btn' onClick={this.completeHandler}><FontAwesomeIcon icon={faCheck} /></button>
                         </div>
                     )}
                 </ul>
