@@ -3,6 +3,7 @@ body {
     background-color: #1F618D;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin: 0;
+    min-height: 100%
 }
 
 h1 {
@@ -11,7 +12,18 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: #ffffff;
+    text-shadow: 0 0 10px 2px;
+}
+
+h3 {
+    margin: 0;
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000000;
+    text-shadow: 0 0 10px 2px;
 }
 
 p {
@@ -38,7 +50,7 @@ ul {
 #container {
     width: 800px;
     max-width: 80%;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     border-radius: 5px;
     padding: 10px;
     box-shadow: 0 0 10px 2px;
@@ -162,20 +174,26 @@ a:hover {
 /* NAV BAR */
 #nav {
     background-color: #ffffff;
-    display: flex;
+    display: inline-flex;
+    float: none;
     width: 100%;
-    margin: 0 0 3rem 0;
-    padding: 0 0 1rem 0;
+    margin: 0;
+    padding: 0;
+    box-shadow: 0 0 10px 2px;
     list-style: none;
-    color: #000000;
-    text-align: center;
 }
 
-#nav-item, #nav-item * {
-    padding: 0.5rem;
+#nav a:visited, #nav a:link {
     color: #000000;
-    justify-content: center;
-    text-align: center;
+    margin: 0;
+    padding: 1rem;
+}
+
+#nav a:hover {
+    color: #ffffff;
+    background: #1F618D;
+    text-decoration: none;
+    transition: all 0.25s ease;
 }
 
 
@@ -195,4 +213,22 @@ a:hover {
 
 #split-item {
     padding: 0.5rem 0.5rem;
+}
+
+/* HEADER STYLING */
+#header-content {
+    text-align: center;
+    text-shadow: 2px 2px #000000;
+}
+
+/* FOOTER STYLING */
+#footer {
+    color: #ffffff;
+}
+
+/* GIF STYLING */
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }

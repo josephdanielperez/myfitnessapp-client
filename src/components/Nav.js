@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom'
 const Nav = () =>
 
     <nav>
-        <ul id='nav'>
-            <li id='nav-item'><Link to='/'>Home</Link></li>
-            <li id='nav-item'><Link to='/workout'>Workout</Link></li>
-            <li id='nav-item'><Link to='/exercises'>Exercises</Link></li>
-            <li id='nav-item'>Reviews</li>
-        </ul>
+        <div id='nav'>
+            <Link to='/'>Home</Link>
+            <Link to='/workout'>Workout</Link>
+            <Link to='/exercises'>Exercises</Link>
+            <Link to='/'>Reviews</Link>
+        </div>
     </nav>
 
 export default Nav

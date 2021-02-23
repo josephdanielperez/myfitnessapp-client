@@ -30,7 +30,7 @@ class ExercisesContainer extends Component {
             return(
                 <div id='content'>
                     <div id='container'>
-                        <p>loading...</p>
+                        <img src='https://media.giphy.com/media/hWZBZjMMuMl7sWe0x8/giphy.gif' alt='loading...'/>
                     </div>
                 </div>
             )

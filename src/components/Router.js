@@ -1,6 +1,5 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-import { Divider } from 'semantic-ui-react'
 
 import Header from './Header'
 import Footer from './Footer'
@@ -17,6 +16,7 @@ const Router = () => {
         <div>
             <Header />
             <Nav />
+            <br /><br /><br />
             <Switch>
                 <Route exact path='/' component={ Home } />
                 <Route exact path='/workout' component={ WorkoutContainer } />
@@ -24,9 +24,7 @@ const Router = () => {
                 <Route exact path='/exercises/:slug' component={ Exercises }/>
                 <Route path='*' component={ NotFound } />
             </Switch>
-            {/* DOUBLE CHECK IF NECESSARY, NEXT 2 LINES */}
-            <Divider />
-            <br /><br />
+            <br /><br /><br />
             <Footer />
         </div>
     );

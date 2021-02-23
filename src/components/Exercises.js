@@ -6,7 +6,8 @@ class Exercises extends Component {
 
     state = {
         loading: true,
-        exercises: []
+        exercises: [],
+        split: ''
     }
     
     componentDidMount() {
@@ -20,7 +21,10 @@ class Exercises extends Component {
         fetch(`http://localhost:3000/splits/${this.props.match.params.slug}`)
         .then(resp => resp.json())
         .then(split => {
-            this.setState({ exercises: split.exercises });
+            this.setState({
+                exercises: split.exercises,
+                split: split.split
+            });
         })
     }
 
@@ -35,7 +39,7 @@ class Exercises extends Component {
             return(
                 <div id='content'>
                     <div id='container'>
-                        <p>loading...</p>
+                        <img src='https://media.giphy.com/media/hWZBZjMMuMl7sWe0x8/giphy.gif' alt='loading...'/>
                     </div>
                 </div>
             )
@@ -44,7 +48,7 @@ class Exercises extends Component {
                 <div id='content'>
                     <div id='container'>
                         <div id='workout-div'>
-                            <h1>Exercises:</h1>
+                            <h1>{this.state.split.name}</h1>
                             <ul>
                                 { this.state.exercises.map(exercise =>
                                     <div key={exercise.id} id='split'>

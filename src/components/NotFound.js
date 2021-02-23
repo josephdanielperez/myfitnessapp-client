@@ -1,15 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
-const Home = () =>
+const NotFound = () =>
 
-    <div>
-        <p>sorry, your page was not found...</p>
-        <br /><br /><br />
-        {/* below is less snappy than link due to reloading window */}
-        {/* <button onClick={() => window.location.href='/'}>home</button> */}
-        <Link to='/'><button>return home</button></Link>
+    <div id='content'>
+        <div id='container'>
+            <img src='https://media.giphy.com/media/8L0Pky6C83SzkzU55a/giphy.gif' alt='sorry, your page was not found...'/>
+        </div>
     </div>
 
 
-export default Home;
+export default NotFound;
