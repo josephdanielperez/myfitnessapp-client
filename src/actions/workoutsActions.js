@@ -26,6 +26,17 @@ export const fetchSplits = async () => {
     return resp
 }
 
+// export function fetchSplits() {
+//     return (dispatch) => {
+//         fetch('http://localhost:3000/splits')
+//         .then(resp => resp.json())
+//         .then(splits => dispatch({
+//             type: 'FETCH_SPLITS',
+//             payload: splits
+//         }))
+//     }
+// }
+
 // export const fetchSplits = () => {
 //     return dispatch => {
 //         return fetch('http://localhost:3000/splits')

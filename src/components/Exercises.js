@@ -18,7 +18,7 @@ class Exercises extends Component {
     }
 
     fetchSplitExercises = () => {
-        fetch(`http://localhost:3000/splits/${this.props.match.params.slug}`)
+        fetch(`http://localhost:3000/splits/${this.props.match.params.id}`)
         .then(resp => resp.json())
         .then(split => {
             this.setState({

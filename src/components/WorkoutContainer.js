@@ -16,16 +16,6 @@ class WorkoutContainer extends Component {
         exercises: [],
     }
 
-    // IF SAVING TO LOCAL STORAGE, USE THIS //
-    // initialState = () => ({
-    //     loading: false,
-    //     toggle: false,
-    //     split: '1',
-    //     length: '3',
-    //     splits: [],
-    //     exercises: [],
-    // })
-
     componentDidMount() {
         fetchSplits()
         .then(data => this.setState({ splits: data }))
