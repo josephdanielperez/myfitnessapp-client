@@ -1,7 +1,8 @@
 body {
     box-sizing: border-box;
     background-color: #1F618D;
-    font-family: Verdana, Geneva, Tahoma, sans-serif ;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
 }
 
 h1 {
@@ -65,6 +66,7 @@ ul {
 .btn:hover {
     background: #ffffff;
     color: #1F618D;
+    transition: all 0.5s ease;
 }
 
 .controls {
@@ -117,6 +119,7 @@ ul {
 .complete-btn:hover {
     background: #ffffff;
     color: #1F618D;
+    transition: all 0.5s ease;
 }
 
 .fa-check {
@@ -144,9 +147,52 @@ a:visited {
     color: #ffffff;
     text-decoration:  none;
 }
+a:hover {
+    /* color: #F4D03F; */
+    text-decoration: underline;
+    transition: all 0.25s ease;
+}
 
 
 /* is this a good idea?!?!?!?!?!?!?!??!?! */
 *:focus {
     outline: none;
+}
+
+/* NAV BAR */
+#nav {
+    background-color: #ffffff;
+    display: flex;
+    width: 100%;
+    margin: 0 0 3rem 0;
+    padding: 0 0 1rem 0;
+    list-style: none;
+    color: #000000;
+    text-align: center;
+}
+
+#nav-item, #nav-item * {
+    padding: 0.5rem;
+    color: #000000;
+    justify-content: center;
+    text-align: center;
+}
+
+
+/* EXERCISE/SPLITS STYLING */
+#split {
+    margin: 0.5rem;
+    background:#1F618D;
+    color: #ffffff;
+    font-size: 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    transition: all 0.5s ease;
+}
+
+#split-item {
+    padding: 0.5rem 0.5rem;
 }

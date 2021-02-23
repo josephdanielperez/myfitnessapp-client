@@ -5,11 +5,15 @@ import React, { Component } from 'react'
 class Exercises extends Component {
 
     state = {
+        loading: true,
         exercises: []
     }
     
     componentDidMount() {
         this.fetchSplitExercises()
+
+        // IS THIS NECESSARY OH MY GAWD THE THIRD TIME //
+        setTimeout(this.toggleState, 500)
     }
 
     fetchSplitExercises = () => {
@@ -20,19 +24,41 @@ class Exercises extends Component {
         })
     }
 
+    toggleState = (e) => {
+        this.setState({
+            loading: !this.state.loading
+        })
+    }
+
     render() {
-        return(
-            <div>
-                <h1>Exercises:</h1>
-                <ul>
-                    { this.state.exercises.map(exercise =>
-                        <div key={exercise.id}>
-                            <li><a target='_blank' rel='noreferrer' href={exercise.url}>{exercise.name}</a></li>
+        if (this.state.loading) {
+            return(
+                <div id='content'>
+                    <div id='container'>
+                        <p>loading...</p>
+                    </div>
+                </div>
+            )
+        } else {
+            return(
+                <div id='content'>
+                    <div id='container'>
+                        <div id='workout-div'>
+                            <h1>Exercises:</h1>
+                            <ul>
+                                { this.state.exercises.map(exercise =>
+                                    <div key={exercise.id} id='split'>
+                                        <li id='split-item'>
+                                            <a target='_blank' rel='noreferrer' href={exercise.url}>{exercise.name}</a>
+                                        </li>
+                                    </div>
+                                )}
+                            </ul>
                         </div>
-                    )}
-                </ul>
-            </div>
-        )
+                    </div>
+                </div>
+            )
+        }
     }
     
 }

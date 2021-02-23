@@ -6,7 +6,7 @@ import { fetchSplits } from '../actions/workoutsActions'
 class ExercisesContainer extends Component {
 
     state = {
-        loading: false,
+        loading: true,
         splits: [],
         exercises: [],
     }
@@ -14,23 +14,44 @@ class ExercisesContainer extends Component {
     componentDidMount() {
         fetchSplits()
         .then(data => this.setState({ splits: data }))
+
+        // NECESSARY BELOW?!?!?! //
+        setTimeout(this.toggleState, 500)
+    }
+
+    toggleState = (e) => {
+        this.setState({
+            loading: !this.state.loading
+        })
     }
   
     render() {
         if (this.state.loading) {
             return(
-                <div>
-                    <p>loading...</p>
+                <div id='content'>
+                    <div id='container'>
+                        <p>loading...</p>
+                    </div>
                 </div>
             )
         }
         else {
             return(
-                <div>
-                    <h1>Splits</h1>
-                    <ul>
-                        { this.state.splits.map(split => <li key={split.id}><Link to={`/exercises/${split.id}`}>{split.name}</Link></li>) }
-                    </ul>
+                <div id='content'>
+                    <div id='container'>
+                        <div id='workout-div'>
+                            <h1>Splits</h1>
+                            <ul>
+                                { this.state.splits.map(split =>
+                                    <div id='split' key={split.id}>
+                                        <li id='split-item'>
+                                            <Link to={`/exercises/${split.id}`}>{split.name}</Link>
+                                        </li>
+                                    </div>
+                                ) }
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             )
         }

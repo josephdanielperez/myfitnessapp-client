@@ -8,8 +8,8 @@ import { fetchSplits, filterExercises } from '../actions/workoutsActions'
 class WorkoutContainer extends Component {
 
     state = {
-        loading: false,
-        toggle: false,
+        loading: true,
+        toggle: true,
         split: '1',
         length: '3',
         splits: [],
@@ -29,6 +29,9 @@ class WorkoutContainer extends Component {
     componentDidMount() {
         fetchSplits()
         .then(data => this.setState({ splits: data }))
+
+        // NECESSARY?!?!?!?!? //
+        setTimeout(this.toggleState, 500)
     }
 
     changeStateHandler = (e) => {

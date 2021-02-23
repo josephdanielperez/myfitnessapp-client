@@ -21,7 +21,7 @@ const Router = () => {
                 <Route exact path='/' component={ Home } />
                 <Route exact path='/workout' component={ WorkoutContainer } />
                 <Route exact path='/exercises' component={ ExercisesContainer } />
-                <Route path='/exercises/:slug' component={ Exercises }/>
+                <Route exact path='/exercises/:slug' component={ Exercises }/>
                 <Route path='*' component={ NotFound } />
             </Switch>
             {/* DOUBLE CHECK IF NECESSARY, NEXT 2 LINES */}
