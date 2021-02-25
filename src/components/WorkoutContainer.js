@@ -1,24 +1,37 @@
 import React, { Component } from 'react'
-// import { connect } from 'react-redux'
+import { connect } from 'react-redux'
 import WorkoutForm from './WorkoutForm'
 import Workout from './Workout'
 
-import { fetchSplits, filterExercises } from '../actions/workoutsActions'
+import { fetchSplits } from '../actions/allActions'
+import { filterExercises } from '../actions/workoutsActions'
 
 class WorkoutContainer extends Component {
 
-    state = {
-        loading: true,
-        toggle: true,
-        split: '1',
-        length: '3',
-        splits: [],
-        exercises: [],
+    constructor(props) {
+        super(props);
+        this.state = {
+            loading: true,
+            toggle: true,
+            split: '1',
+            length: '3',
+            splits: [],
+            exercises: [],            
+        }
     }
 
+    // state = {
+    //     loading: true,
+    //     toggle: true,
+    //     split: '1',
+    //     length: '3',
+    //     splits: [],
+    //     exercises: [],
+    // }
+
     componentDidMount() {
-        fetchSplits()
-        .then(data => this.setState({ splits: data }))
+        this.props.fetchSplits()
+        // .then(data => this.setState({ splits: data }))
 
         // NECESSARY?!?!?!?!? //
         setTimeout(this.toggleState, 500)
@@ -85,5 +98,11 @@ class WorkoutContainer extends Component {
         }
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        splits: state.splits
+    }
+}
   
-export default WorkoutContainer;
+export default connect(mapStateToProps, { fetchSplits })(WorkoutContainer);

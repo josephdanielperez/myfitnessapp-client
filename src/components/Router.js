@@ -11,6 +11,8 @@ import ExercisesContainer from './ExercisesContainer'
 import Exercises from './Exercises'
 import NotFound from './NotFound'
 
+import test from './test'
+
 const Router = () => {
     return (
         <div>
@@ -22,6 +24,7 @@ const Router = () => {
                 <Route exact path='/workout' component={ WorkoutContainer } />
                 <Route exact path='/exercises' component={ ExercisesContainer } />
                 <Route exact path='/exercises/:id' component={ Exercises }/>
+                <Route exact path='/test' component={ test } />
                 <Route path='*' component={ NotFound } />
             </Switch>
             <br /><br /><br />

@@ -1,18 +1,3 @@
-// // synchronous actions //
-// export const setExercises = exercises => {
-//     return {
-//         type: 'SET_EXERCISES',
-//         exercises
-//     }
-// }
-
-// export const setSplits = splits => {
-//     return {
-//         type: 'SET_SPLITS',
-//         splits
-//     }
-// }
-
 // asynchronous actions //
 export const fetchSplits = async () => {
     const data = await fetch('http://localhost:3000/splits', {
@@ -25,46 +10,6 @@ export const fetchSplits = async () => {
     const resp = await data.json();
     return resp
 }
-
-// export function fetchSplits() {
-//     return (dispatch) => {
-//         fetch('http://localhost:3000/splits')
-//         .then(resp => resp.json())
-//         .then(splits => dispatch({
-//             type: 'FETCH_SPLITS',
-//             payload: splits
-//         }))
-//     }
-// }
-
-// export const fetchSplits = () => {
-//     return dispatch => {
-//         return fetch('http://localhost:3000/splits')
-//         .then(resp => resp.json())
-//         .then(splits => dispatch({ type: 'FETCH_SPLITS', payload: splits }))
-//     }
-// }
-
-// export const fetchSplitExercises = (split) => {
-//     let data = []
-//     fetch(`http://localhost:3000/exercises/${split}`)
-//     .then(resp => resp.json())
-//     .then(split => {
-//         data.push(split.exercises)
-//     })
-//     return data
-// }
-
-// export const fetchSplitExercises = (split) => {
-//     return dispatch => {
-//         fetch(`http://localhost:3000/splits/${split}`)
-//         .then(resp => resp.json())
-//         .then(split => {
-//             dispatch({ type: 'FETCH_SPLITS', payload: split.exercises })
-//             // this.setState({ exercises: split.exercises });
-//         })
-//     }
-// };
 
 export const filterExercises = (state) => {
     let data = []

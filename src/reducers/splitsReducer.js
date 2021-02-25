@@ -1,4 +1,6 @@
-export const splitsReducer = (state = [], action) => {
+export const splitsReducer = (state = {
+    splits: []
+} ,action) => {
     switch(action.type){
         case 'FETCH_SPLITS':
             return action.payload
@@ -6,3 +8,5 @@ export const splitsReducer = (state = [], action) => {
             return state
     }
 }
+
+export default splitsReducer;
