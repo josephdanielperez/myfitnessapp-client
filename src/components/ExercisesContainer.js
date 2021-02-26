@@ -15,16 +15,6 @@ class ExercisesContainer extends Component {
             <div id='content'>
                 <div id='container'>
                     <div id='workout-div'>
-                        {/* <h1>Exercises</h1>
-                        <ul>
-                            { this.props.exercises.map(exercise =>
-                                <div key={exercise.id} id='split'>
-                                <li id='split-item'>
-                                    <a target='_blank' rel='noreferrer' href={exercise.url}>{exercise.name}</a>
-                                </li>
-                            </div>
-                            )}
-                        </ul> */}
                         <h1>Splits</h1>
                         <ul>
                             { this.props.splits.map(split =>
@@ -47,11 +37,5 @@ const mapStateToProps = state => {
         splits: state.splits
     }
 }
-
-const mapDispatchToProps = dispatch => {
-    return {
-        fetchSplits: () => dispatch(fetchSplits())
-    }
-}
   
-export default connect(mapStateToProps, mapDispatchToProps)(ExercisesContainer)
+export default connect(mapStateToProps, { fetchSplits })(ExercisesContainer)
