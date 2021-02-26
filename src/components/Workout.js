@@ -4,7 +4,7 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons'
 
 class Workout extends Component {
 
-    completeHandler(e) {
+    completeExercise(e) {
         const check = e.target;
         check.parentElement.classList.toggle('completed');
 
@@ -19,6 +19,13 @@ class Workout extends Component {
         }
     }
 
+    completeWorkout = (e) => {
+        e.preventDefault();
+
+        alert('Great job today! See you for another workout soon!');
+        window.location.reload();
+    }
+
     render() {
         return(
             <div id='workout-div'>
@@ -27,7 +34,7 @@ class Workout extends Component {
                     { this.props.exercises.map(exercise =>
                         <div className='workout' key={exercise.id}>
                             <li className='workout-item' value={exercise.name}><a target='_blank' rel='noreferrer' href={exercise.url}>{exercise.name}</a></li>
-                            <button className='complete-btn' onClick={this.completeHandler}><FontAwesomeIcon icon={faCheck} /></button>
+                            <button className='complete-btn' onClick={this.completeExercise}><FontAwesomeIcon icon={faCheck} /></button>
                         </div>
                     )}
                 </ul>
@@ -35,7 +42,7 @@ class Workout extends Component {
                 <br />
 
                 <div className='finish-button'>
-                    <button onClick={this.props.completeWorkoutHandler} className='btn hide' id='finish-workout'>finish workout</button>
+                    <button onClick={this.completeWorkout} className='btn hide' id='finish-workout'>finish workout</button>
                 </div>
             </div>
         )

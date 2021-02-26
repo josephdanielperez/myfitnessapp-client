@@ -38,6 +38,5 @@ export const filterExercises = (split, length) => {
         }
         split.exercises.slice(0, length).forEach(exercise => data.push(exercise));
     })
-    
     return data
 }
