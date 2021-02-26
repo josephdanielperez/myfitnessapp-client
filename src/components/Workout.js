@@ -24,7 +24,7 @@ class Workout extends Component {
             <div id='workout-div'>
                 <h1>Today's Workout</h1>
                 <ul>
-                    { this.props.state.exercises.map(exercise =>
+                    { this.props.exercises.map(exercise =>
                         <div className='workout' key={exercise.id}>
                             <li className='workout-item' value={exercise.name}><a target='_blank' rel='noreferrer' href={exercise.url}>{exercise.name}</a></li>
                             <button className='complete-btn' onClick={this.completeHandler}><FontAwesomeIcon icon={faCheck} /></button>

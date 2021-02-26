@@ -1,33 +1,50 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { fetchSplits } from '../actions/allActions'
+import { fetchSplits, fetchExercises } from '../actions/allActions'
+
+import TestForm from './TestForm'
 
 class test extends Component {
 
-    componentDidMount() {
-        this.props.fetchSplits();
+    constructor(props) {
+        super(props);
+        this.state = {
+            toggle: true,
+            split: '1',
+            length: '3',
+        }
     }
 
-    splits = () => {
-        return this.props.splits
+    componentDidMount() {
+        this.props.fetchSplits()
+    }
+
+    submitHandler = (e) => {
+        e.preventDefault();
     }
   
     render() {
         return(
             <div id='content'>
                 <div id='container'>
-                    { this.splits() }
+                    <TestForm splits={this.props.splits} submitHandler={this.submitHandler} />
                 </div>
             </div>
         )
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
-        splits: state.splits
+        splits: state.splits,
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchSplits: () => dispatch(fetchSplits()),
     }
 }
   
-export default connect(mapStateToProps, { fetchSplits })(test);
+export default connect(mapStateToProps, mapDispatchToProps)(test);

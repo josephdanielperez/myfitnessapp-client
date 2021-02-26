@@ -1,9 +1,21 @@
-import { combineReducers } from 'redux'
+export const rootReducer = (state = { splits: [] }, action) => {
 
-import { splitsReducer } from './splitsReducer'
-import { exercisesReducer } from './exercisesReducer'
+    switch(action.type) {
+        case 'LOADING_SPLITS':
+            return {
+                ...state,
+                splits: [...state.splits],
+            }
 
-export const rootReducer = combineReducers({
-    splits: splitsReducer,
-    exercises: exercisesReducer,
-})
+        case 'FETCH_SPLITS':
+            return {
+                ...state,
+                splits: action.payload,
+            }
+
+        default:
+            return state
+    }
+}
+
+export default rootReducer;

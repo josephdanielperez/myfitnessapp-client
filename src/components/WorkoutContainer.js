@@ -3,38 +3,22 @@ import { connect } from 'react-redux'
 import WorkoutForm from './WorkoutForm'
 import Workout from './Workout'
 
-import { fetchSplits } from '../actions/allActions'
-import { filterExercises } from '../actions/workoutsActions'
+
+import { fetchSplits, filterExercises } from '../actions/allActions'
 
 class WorkoutContainer extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            loading: true,
-            toggle: true,
             split: '1',
             length: '3',
-            splits: [],
             exercises: [],            
         }
     }
 
-    // state = {
-    //     loading: true,
-    //     toggle: true,
-    //     split: '1',
-    //     length: '3',
-    //     splits: [],
-    //     exercises: [],
-    // }
-
     componentDidMount() {
-        this.props.fetchSplits()
-        // .then(data => this.setState({ splits: data }))
-
-        // NECESSARY?!?!?!?!? //
-        setTimeout(this.toggleState, 500)
+        this.props.fetchSplits();
     }
 
     changeStateHandler = (e) => {
@@ -47,43 +31,22 @@ class WorkoutContainer extends Component {
     submitStateHandler = (e) => {
         e.preventDefault();
 
-        this.setState({
-            exercises: filterExercises(this.state),
-            loading: !this.state.loading
-        });
-        setTimeout(this.toggleState, 500);
-    }
-
-    toggleState = (e) => {
-        this.setState({
-            loading: !this.state.loading,
-            toggle: !this.state.toggle
-        })
+        this.setState({ exercises: filterExercises(this.state.split, this.state.length) })
     }
 
     completeWorkoutHandler = (e) => {
         e.preventDefault();
 
         alert('Great job today! See you for another workout soon!');
-        // this.setState(this.initialState);
         window.location.reload();
     }
   
     render() {
-        if (this.state.loading) {
+        if (!this.state.exercises.length) {
             return(
                 <div id='content'>
                     <div id='container'>
-                        <img src='https://media.giphy.com/media/hWZBZjMMuMl7sWe0x8/giphy.gif' alt='loading...'/>
-                    </div>
-                </div>
-            )
-        }
-        else if (!this.state.toggle) {
-            return(
-                <div id='content'>
-                    <div id='container'>
-                        <WorkoutForm state={this.state} changeStateHandler={this.changeStateHandler} submitStateHandler={this.submitStateHandler} />
+                        <WorkoutForm splits={this.props.splits} state={this.state} changeStateHandler={this.changeStateHandler} submitStateHandler={this.submitStateHandler} />
                     </div>
                 </div>
             )
@@ -91,7 +54,7 @@ class WorkoutContainer extends Component {
             return(
                 <div id='content'>
                     <div id='container'>
-                        <Workout state={this.state} completeWorkoutHandler={this.completeWorkoutHandler} />
+                        <Workout exercises={this.state.exercises} completeWorkoutHandler={this.completeWorkoutHandler} />
                     </div>
                 </div>
             )
@@ -101,8 +64,14 @@ class WorkoutContainer extends Component {
 
 const mapStateToProps = state => {
     return {
-        splits: state.splits
+        splits: state.splits,
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchSplits: () => dispatch(fetchSplits()),
     }
 }
   
-export default connect(mapStateToProps, { fetchSplits })(WorkoutContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(WorkoutContainer);
