@@ -1,4 +1,4 @@
-export const rootReducer = (state = { splits: [], exercises: [] }, action) => {
+export const rootReducer = (state = { splits: [] }, action) => {
 
     switch(action.type) {
         case 'LOADING_SPLITS':
@@ -11,18 +11,6 @@ export const rootReducer = (state = { splits: [], exercises: [] }, action) => {
             return {
                 ...state,
                 splits: action.payload,
-            }
-
-        case 'LOADING_SPLIT_EXERCISES':
-            return {
-                ...state,
-                exercises: [...state.exercises],
-            }
-
-        case 'FETCH_SPLIT_EXERCISES':
-            return {
-                ...state,
-                exercises: action.payload,
             }
 
         default:

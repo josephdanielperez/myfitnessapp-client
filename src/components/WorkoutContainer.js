@@ -3,14 +3,13 @@ import { connect } from 'react-redux'
 import WorkoutForm from './WorkoutForm'
 import Workout from './Workout'
 
-import { fetchSplits, filterExercises } from '../actions/allActions'
+import { fetchSplits } from '../actions/allActions'
 
 class WorkoutContainer extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            toggle: false,
             split: '1',
             length: '3',
             exercises: []         
@@ -31,16 +30,24 @@ class WorkoutContainer extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
-        this.setState({ exercises: filterExercises(this.state.split, this.state.length) })
-        setTimeout(this.setToggle, 50)
-    }
-
-    setToggle = () => {
-        this.setState({ toggle: true })
+        fetch(`http://localhost:3000/splits/${this.state.split}`)
+        .then(resp => resp.json())
+        .then(split => {
+            let currentIndex = split.exercises.length, temporaryValue, randomIndex;
+            while (0 !== currentIndex) {
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
+    
+                temporaryValue = split.exercises[currentIndex];
+                split.exercises[currentIndex] = split.exercises[randomIndex];
+                split.exercises[randomIndex] = temporaryValue;
+            }
+            this.setState({ exercises: split.exercises.slice(0, this.state.length) });
+        })
     }
   
     render() {
-        if (!this.state.toggle) {
+        if (!this.state.exercises.length) {
             return(
                 <div id='content'>
                     <div id='container'>
