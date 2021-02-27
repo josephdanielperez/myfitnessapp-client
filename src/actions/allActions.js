@@ -10,16 +10,14 @@ export const fetchSplits = () => {
     }
 }
 
-export const fetchExercises = () => {
-    return (dispatch) => {
-        dispatch({ type: 'LOADING_EXERCISES' })
-
-        return fetch('http://localhost:3000/exercises')
-        .then(resp => resp.json())
-        .then(exercises => 
-            dispatch({type: 'FETCH_EXERCISES', payload: exercises})
-        )
-    }
+export const fetchSplitExercises = (split) => {
+    let data = []
+    fetch(`http://localhost:3000/splits/${split}`)
+    .then(resp => resp.json())
+    .then(split =>
+        data.push(split.exercises)
+    )
+    return data
 }
 
 export const filterExercises = (split, length) => {

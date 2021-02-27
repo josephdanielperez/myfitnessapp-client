@@ -23,6 +23,7 @@ class Workout extends Component {
         e.preventDefault();
 
         alert('Great job today! See you for another workout soon!');
+
         window.location.reload();
     }
 

@@ -12,13 +12,14 @@ export const rootReducer = (state = { splits: [], exercises: [] }, action) => {
                 ...state,
                 splits: action.payload,
             }
-        case 'LOADING_EXERCISES':
+
+        case 'LOADING_SPLIT_EXERCISES':
             return {
                 ...state,
                 exercises: [...state.exercises],
             }
 
-        case 'FETCH_EXERCISES':
+        case 'FETCH_SPLIT_EXERCISES':
             return {
                 ...state,
                 exercises: action.payload,
