@@ -6,6 +6,7 @@ import Footer from './Footer'
 import Nav from './Nav'
 
 import Home from './Home'
+import Dashboard from './Dashboard'
 import WorkoutContainer from './WorkoutContainer'
 import ExercisesContainer from './ExercisesContainer'
 import Exercises from './Exercises'
@@ -19,9 +20,10 @@ const Router = () => {
             <br /><br /><br />
             <Switch>
                 <Route exact path='/' component={ Home } />
+                <Route exact path='/dashboard' component={ Dashboard } />
                 <Route exact path='/workout' component={ WorkoutContainer } />
                 <Route exact path='/exercises' component={ ExercisesContainer } />
-                <Route exact path='/exercises/:id' component={ Exercises }/>                
+                <Route exact path='/exercises/:id' component={ Exercises }/>
                 <Route path='*' component={ NotFound } />
             </Switch>
             <br /><br /><br />
