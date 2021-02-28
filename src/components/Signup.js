@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
-import { updateSignupForm, signup } from '../actions/userActions.js'
+import { updateSignupForm, createUser } from '../actions/userActions.js'
 
 class Signup extends Component {
 
@@ -31,7 +31,7 @@ class Signup extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        this.props.signup(this.state)
+        this.props.createUser(this.state)
     }
 
     render() {
@@ -61,10 +61,10 @@ class Signup extends Component {
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = ({ user }) => {
     return {
-        state
+        user
     }
 }
 
-export default connect(mapStateToProps, { updateSignupForm, signup })(Signup)
+export default connect(mapStateToProps, { updateSignupForm, createUser })(Signup)
