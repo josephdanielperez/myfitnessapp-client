@@ -67,28 +67,22 @@ export const login = (credentials, history) => {
     }
 }
   
-export const signup = (credentials, history) => {
-    return dispatch => {
-        const userInfo = {
-            user: credentials
-        }
-        return fetch("http://localhost:3000/users", {
-            credentials: "include",
-            method: "POST",
+export const signup = (data) => {
+    return (dispatch) => {
+        dispatch({ type: 'LOADING_USER' })
+        return fetch('http://localhost:3000/users', {
+            method: 'POST',
+            mode: 'cors',
+            // credentials: 'include',
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(userInfo)
+            body: JSON.stringify({ user: data })
         })
-        .then(r => r.json())
-        .then(response => {
-            if (response.error) {
-                alert(response.error)
-            } else {
-                dispatch(setCurrentUser(response.data))
-                dispatch(resetSignupForm())
-                history.push('/')
-            }
+        .then(resp => resp.json())
+        .then(user => {
+            dispatch({ type: 'LOGIN_USER', payload: user })
+            // dispatch(getCurrentUser())
         })
     }
 }

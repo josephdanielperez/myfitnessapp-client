@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 import { updateSignupForm, signup } from '../actions/userActions.js'
 
@@ -11,43 +12,58 @@ class Signup extends Component {
         this.state = {
             name: '',
             username: '',
-            password: ''
+            password: '',
+            shouldRedirect: false
         }
     }
 
-    componentDidMount() {
-        this.props.updateSignupForm();
-    }
+    // componentDidUpdate(prevProps) {
+    //     if (!prevProps.user.loggedIn && this.props.user.loggedIn) {
+    //         this.setState({ shouldRedirect: true })
+    //     }
+    // }
 
     handleChange = (e) => {
-        const updatedFormInfo = {
-            ...this.props.signupFormData,
+        this.setState({
             [e.target.name]: e.target.value
-        }
-
-        updateSignupForm(updatedFormInfo)
+        })
     }
 
     handleSubmit = (e) => {
         e.preventDefault()
-        signup(this.props.signupFormData)
+        this.props.signup(this.state)
     }
 
     render() {
-    return (
-        <form onSubmit={this.handleSubmit}>
-            {/* <input placeholder='name' value={this.props.signupFormData.name} name='name' type='text' onChange={this.handleChange} /><br />
-            <input placeholder='username' value={this.props.signupFormData.username} name='username' type='text' onChange={this.handleChange} /><br />
-            <input placeholder='password' value={this.props.signupFormData.password} name='password' type='text' onChange={this.handleChange} /><br />
-            <input type='submit' value='signup' /> */}
-        </form>
-    )
+        if (this.state.shouldRedirect) {
+            return <Redirect to='/' />
+        } else {
+            return (
+                <div id='content'>
+                    <div id='container'>
+                        <h1>Sign Up</h1>
+                        <form onSubmit={this.handleSubmit}>
+                            <label>Name: </label>
+                            <input value={this.state.name} name='name' type='text' onChange={this.handleChange} /><br />
+                            
+                            <label>Username: </label>
+                            <input value={this.state.username} name='username' type='text' onChange={this.handleChange} /><br />
+                            
+                            <label>Password: </label>
+                            <input value={this.state.password} name='password' type='password' onChange={this.handleChange} /><br />
+                            
+                            <input type='submit' value='signup' />
+                        </form>
+                    </div>
+                </div>
+            )
+        }
     }
 }
 
 const mapStateToProps = state => {
     return {
-        signupFormData: state.signupForm
+        state
     }
 }
 
