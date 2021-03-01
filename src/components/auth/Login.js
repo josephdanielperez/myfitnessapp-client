@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
 
 export default class Login extends Component {
 
@@ -33,7 +32,7 @@ export default class Login extends Component {
             }
         }
 
-        fetch('http://localhost:3000/registrations', {
+        fetch('http://localhost:3000/sessions', {
             credentials: 'include',
             method: 'POST',
             headers: {
@@ -43,20 +42,13 @@ export default class Login extends Component {
             body: JSON.stringify(data)
         })
         .then(resp => resp.json())
-        .catch(error => console.log('login error', error))
-
-        // axios.post('http://localhost:3000/sessions', {
-        //     user: {
-        //         username: this.state.username,
-        //         password: this.state.password,
-        //     }
-        // }, { withCredentials: true })
-        // .then(resp => {
-        //     if (resp.data.logged_in) {
-        //         this.props.handleSuccessfulAuth(resp.data)
-        //     }
-        // })
-        // .catch(error => console.log('login error', error))
+        .then(json => {
+            if (json.logged_in) {
+                this.props.handleSuccessfulAuth(json)
+            } else {
+                alert('invalid credentials, please try again')
+            }
+        })
     }
 
     render() {
