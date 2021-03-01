@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 import Registration from './auth/Registration'
 import Login from './auth/Login'
 
@@ -17,7 +18,9 @@ class Home extends Component {
     }
 
     handleLogoutClick() {
-        this.props.handleLogout();
+        axios.delete('http://localhost:3000/logout', { withCredentials: true })
+        .then(resp => this.props.handleLogout())
+        .catch(error => console.log('logout error', error))
     }
 
     render() {
