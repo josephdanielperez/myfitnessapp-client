@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import axios from 'axios'
+import React, { Component } from 'react';
+import axios from 'axios';
 
 export default class Registration extends Component {
 
@@ -26,23 +26,30 @@ export default class Registration extends Component {
     handleSubmit(e) {
         e.preventDefault();
 
-        const {
-            username,
-            password,
-            password_confirmation
-        } = this.state;
-
-        axios.post('http://localhost:3000/registrations', {
-            user: {
-                username: username,
-                password: password,
-                password_confirmation: password_confirmation
+        fetch('http://localhost:3000/registrations', {
+            credentials: 'include',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ user: { username: this.state.username, password: this.state.password, password_confirmation: this.state.password_confirmation } })
+        })
+        .then(resp => {
+            if (resp.ok === true) {
+                this.props.handleSuccessfulAuth(resp.data)
             }
-        },
-        { withCredentials: true }
-        )
-        .then(resp => console.log('registration response', resp))
+        })
         .catch(error => console.log('registration error', error))
+
+        // axios.post('http://localhost:3000/registrations', {
+        //     user: {
+        //         username: this.state.username,
+        //         password: this.state.password,
+        //         password_confirmation: this.state.password_confirmation
+        //     }
+        // }, { withCredentials: true })
+        // .then(resp => console.log('registration response', resp))
+        // .catch(error => console.log('registration error', error))
     }
 
     render() {
