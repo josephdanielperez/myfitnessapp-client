@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom'
-import axios from 'axios'
 import './App.css'
 
 import Header from './Header'
@@ -33,21 +32,28 @@ class App extends Component {
     }
 
     checkLoginStatus() {
-        axios.get('http://localhost:3000/logged_in', { withCredentials: true })
-        .then(resp => {
-            if (resp.data.logged_in && this.state.loggedInStatus === 'NOT_LOGGED_IN') {
+        fetch('http://localhost:3000/logged_in', {
+            credentials: 'include',
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'accept': 'application/json'
+            }
+        })
+        .then(resp => resp.json())
+        .then(json => {
+            if (json.logged_in && this.state.loggedInStatus === 'NOT_LOGGED_IN') {
                 this.setState({
                     loggedInStatus: 'LOGGED_IN',
-                    user: resp.data.user
+                    user: json.user
                 })
-            } else if (!resp.data.logged_in & this.state.loggedInStatus === 'LOGGED_IN') {
+            } else if (!json.logged_in && this.state.loggedInStatus === 'LOGGED_IN') {
                 this.setState({
                     loggedInStatus: 'NOT_LOGGED_IN',
                     user: {}
                 })
             }
         })
-        .catch(error => console.log('check login error', error))
     }
 
     handleLogin(data) {

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
 
 export default class Registration extends Component {
 
@@ -44,21 +43,13 @@ export default class Registration extends Component {
             body: JSON.stringify(data)
         })
         .then(resp => resp.json())
-        .catch(error => console.log('registration error', error))
-
-    //     axios.post('http://localhost:3000/registrations', {
-    //         user: {
-    //             username: this.state.username,
-    //             password: this.state.password,
-    //             password_confirmation: this.state.password_confirmation
-    //         }
-    //     }, { withCredentials: true })
-    //     .then(resp => {
-    //         if (resp.data.status === 'created') {
-    //             this.props.handleSuccessfulAuth(resp.data)
-    //         }
-    //     })
-    //     .catch(error => console.log('registration error', error))
+        .then(json => {
+            if (json.status === 'created') {
+                this.props.handleSuccessfulAuth(json.user)
+            } else {
+                alert('Username is either taken or password fields did not match. Please try again.')
+            }
+        })
     }
 
     render() {
