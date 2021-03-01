@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Registration from './auth/Registration'
+import Login from './auth/Login'
 
 class Home extends Component {
 
@@ -20,6 +21,7 @@ class Home extends Component {
                 <div id='container'>
                     <h1>Status: {this.props.loggedInStatus} </h1>
                     <Registration handleSuccessfulAuth={this.handleSuccessfulAuth} />
+                    <Login />
                 </div>
             </div>
         )
