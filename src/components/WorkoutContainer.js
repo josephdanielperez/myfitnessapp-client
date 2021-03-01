@@ -44,10 +44,14 @@ class WorkoutContainer extends Component {
             this.setState({ exercises: split.exercises.slice(0, this.state.length) });
         })
     }
+
+    handleReset = (e) => {
+        e.preventDefault();
+    }
   
     render() {
         if (!this.state.exercises.length) {
-            return(
+            return (
                 <div id='content'>
                     <div id='container'>
                         <WorkoutForm splits={this.props.splits} state={this.state} handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
@@ -55,7 +59,7 @@ class WorkoutContainer extends Component {
                 </div>
             )
         } else {
-            return(
+            return (
                 <div id='content'>
                     <div id='container'>
                         <Workout exercises={this.state.exercises} />

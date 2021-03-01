@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Registration from './auth/Registration'
-import Login from './auth/Login'
+import Registration from './Registration'
+import Login from './Login'
 
 class Home extends Component {
 

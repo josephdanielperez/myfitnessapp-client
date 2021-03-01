@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 
-export default class Login extends Component {
+import { fetchLogin } from '../actions/allActions'
+
+class Login extends Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
             username: '',
-            password: '',
-            password_confirmation: '',
-            loginErrors: ''
+            password: ''
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -32,23 +33,25 @@ export default class Login extends Component {
             }
         }
 
-        fetch('http://localhost:3000/sessions', {
-            credentials: 'include',
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'accept': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-        .then(resp => resp.json())
-        .then(json => {
-            if (json.logged_in) {
-                this.props.handleSuccessfulAuth(json)
-            } else {
-                alert('invalid credentials, please try again')
-            }
-        })
+        this.props.fetchLogin(data);
+
+        // fetch('http://localhost:3000/sessions', {
+        //     credentials: 'include',
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         'accept': 'application/json'
+        //     },
+        //     body: JSON.stringify(data)
+        // })
+        // .then(resp => resp.json())
+        // .then(json => {
+        //     if (json.logged_in) {
+        //         this.props.handleSuccessfulAuth(json)
+        //     } else {
+        //         alert('invalid credentials, please try again')
+        //     }
+        // })
     }
 
     render() {
@@ -68,3 +71,12 @@ export default class Login extends Component {
     }
 
 }
+
+const mapStateToProps = state => {
+    return {
+        user: state.user,
+        loggedInStatus: state.loggedInStatus
+    }
+}
+
+export default connect(mapStateToProps, { fetchLogin })(Login);
