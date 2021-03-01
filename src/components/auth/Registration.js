@@ -26,30 +26,34 @@ export default class Registration extends Component {
     handleSubmit(e) {
         e.preventDefault();
 
-        fetch('http://localhost:3000/registrations', {
-            credentials: 'include',
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ user: { username: this.state.username, password: this.state.password, password_confirmation: this.state.password_confirmation } })
-        })
+        // fetch('http://localhost:3000/registrations', {
+        //     credentials: 'include',
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify({ user: { username: this.state.username, password: this.state.password, password_confirmation: this.state.password_confirmation } })
+        // })
+        // .then(resp => {
+        //     if (resp.ok === true) {
+        //         this.props.handleSuccessfulAuth(resp.data)
+        //     }
+        // })
+        // .catch(error => console.log('registration error', error))
+
+        axios.post('http://localhost:3000/registrations', {
+            user: {
+                username: this.state.username,
+                password: this.state.password,
+                password_confirmation: this.state.password_confirmation
+            }
+        }, { withCredentials: true })
         .then(resp => {
-            if (resp.ok === true) {
+            if (resp.data.status === 'created') {
                 this.props.handleSuccessfulAuth(resp.data)
             }
         })
         .catch(error => console.log('registration error', error))
-
-        // axios.post('http://localhost:3000/registrations', {
-        //     user: {
-        //         username: this.state.username,
-        //         password: this.state.password,
-        //         password_confirmation: this.state.password_confirmation
-        //     }
-        // }, { withCredentials: true })
-        // .then(resp => console.log('registration response', resp))
-        // .catch(error => console.log('registration error', error))
     }
 
     render() {

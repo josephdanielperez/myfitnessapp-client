@@ -27,6 +27,7 @@ class App extends Component {
     }
 
     handleLogin(data) {
+        console.log(data)
         this.setState({
             loggedInStatus: 'LOGGED_IN',
             user: data
@@ -40,7 +41,7 @@ class App extends Component {
                 <Nav />
                 <br /><br /><br />
                 <Switch>
-                    <Route exact path='/' render={props => ( <Home {...props} handleLogin={this.state.handLogin} loggedInStatus={this.state.loggedInStatus} /> )} />
+                    <Route exact path='/' render={props => ( <Home {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} /> )} />
                     <Route exact path='/dashboard' render={props => ( <Dashboard {...props} loggedInStatus={this.state.loggedInStatus} /> )} />
                     <Route exact path='/workout' component={ WorkoutContainer } />
                     <Route exact path='/exercises' component={ ExercisesContainer } />
