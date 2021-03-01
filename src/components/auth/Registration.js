@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 
 export default class Registration extends Component {
 
@@ -26,34 +26,39 @@ export default class Registration extends Component {
     handleSubmit(e) {
         e.preventDefault();
 
-        // fetch('http://localhost:3000/registrations', {
-        //     credentials: 'include',
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify({ user: { username: this.state.username, password: this.state.password, password_confirmation: this.state.password_confirmation } })
-        // })
-        // .then(resp => {
-        //     if (resp.ok === true) {
-        //         this.props.handleSuccessfulAuth(resp.data)
-        //     }
-        // })
-        // .catch(error => console.log('registration error', error))
-
-        axios.post('http://localhost:3000/registrations', {
+        const data = {
             user: {
                 username: this.state.username,
                 password: this.state.password,
                 password_confirmation: this.state.password_confirmation
             }
-        }, { withCredentials: true })
-        .then(resp => {
-            if (resp.data.status === 'created') {
-                this.props.handleSuccessfulAuth(resp.data)
-            }
+        }
+
+        fetch('http://localhost:3000/registrations', {
+            credentials: 'include',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'accept': 'application/json'
+            },
+            body: JSON.stringify(data)
         })
+        .then(resp => resp.json())
         .catch(error => console.log('registration error', error))
+
+    //     axios.post('http://localhost:3000/registrations', {
+    //         user: {
+    //             username: this.state.username,
+    //             password: this.state.password,
+    //             password_confirmation: this.state.password_confirmation
+    //         }
+    //     }, { withCredentials: true })
+    //     .then(resp => {
+    //         if (resp.data.status === 'created') {
+    //             this.props.handleSuccessfulAuth(resp.data)
+    //         }
+    //     })
+    //     .catch(error => console.log('registration error', error))
     }
 
     render() {
