@@ -30,7 +30,7 @@ class App extends Component {
         console.log(data)
         this.setState({
             loggedInStatus: 'LOGGED_IN',
-            user: data
+            user: data.user
         })
     }
 
