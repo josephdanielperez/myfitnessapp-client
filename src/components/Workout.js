@@ -19,14 +19,6 @@ class Workout extends Component {
         }
     }
 
-    completeWorkout = (e) => {
-        e.preventDefault();
-
-        alert('Great job today! See you for another workout soon!');
-
-        window.location.reload();
-    }
-
     render() {
         return(
             <div id='workout-div'>
@@ -43,7 +35,7 @@ class Workout extends Component {
                 <br />
 
                 <div className='finish-button'>
-                    <button onClick={this.completeWorkout} className='btn hide' id='finish-workout'>finish workout</button>
+                    <button onClick={this.props.handleReset} className='btn hide' id='finish-workout'>finish workout</button>
                 </div>
             </div>
         )

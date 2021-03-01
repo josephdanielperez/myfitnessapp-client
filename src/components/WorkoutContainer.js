@@ -45,8 +45,13 @@ class WorkoutContainer extends Component {
         })
     }
 
-    handleReset = (e) => {
-        e.preventDefault();
+    handleReset = () => {
+        alert(`Great job ${this.props.user}! See you for another workout soon!`);
+        this.setState({
+            split: '1',
+            length: '3',
+            exercises: []
+        })
     }
   
     render() {
@@ -62,7 +67,7 @@ class WorkoutContainer extends Component {
             return (
                 <div id='content'>
                     <div id='container'>
-                        <Workout exercises={this.state.exercises} />
+                        <Workout exercises={this.state.exercises} handleReset={this.handleReset} />
                     </div>
                 </div>
             )
@@ -73,6 +78,7 @@ class WorkoutContainer extends Component {
 const mapStateToProps = state => {
     return {
         splits: state.splits,
+        user: state.user
     }
 }
   
