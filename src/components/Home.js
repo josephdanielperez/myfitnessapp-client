@@ -21,12 +21,6 @@ class Home extends Component {
 
     handleLogoutClick() {
         this.props.fetchLogout()
-
-        // fetch('http://localhost:3000/logout', {
-        //     credentials: 'include',
-        //     method: 'DELETE'
-        // })
-        // .then(resp => this.props.handleLogout())
     }
 
     render() {
@@ -46,6 +40,7 @@ class Home extends Component {
 
 const mapStateToProps = state => {
     return {
+        splits: state.splits,
         user: state.user,
         loggedInStatus: state.loggedInStatus
     }

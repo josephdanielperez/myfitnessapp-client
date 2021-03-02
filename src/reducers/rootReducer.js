@@ -8,7 +8,6 @@ export const rootReducer = (state = {
         case 'LOADING_SPLITS':
             return {
                 ...state,
-                splits: [...state.splits],
             }
 
         case 'FETCH_SPLITS':
@@ -31,6 +30,7 @@ export const rootReducer = (state = {
 
         case 'LOGOUT':
             return {
+                ...state,
                 user: '',
                 loggedInStatus: 'NOT_LOGGED_IN'
             }

@@ -1,5 +1,5 @@
 export const fetchSplits = () => {
-    return (dispatch) => {
+    return dispatch => {
         dispatch({ type: 'LOADING_SPLITS' })
 
         return fetch('http://localhost:3000/splits')
@@ -33,7 +33,7 @@ export const checkLoginStatus = () => {
 
 
 export const fetchRegistration = (data) => {
-    return (dispatch) => {
+    return dispatch => {
         fetch('http://localhost:3000/registrations', {
             credentials: 'include',
             method: 'POST',
@@ -55,9 +55,7 @@ export const fetchRegistration = (data) => {
 }
 
 export const fetchLogin = (data) => {
-    console.log('just here')
     return dispatch => {
-        console.log('we are here')
         dispatch({ type: 'LOADING_LOGIN' })
 
         return fetch('http://localhost:3000/sessions', {
@@ -70,11 +68,8 @@ export const fetchLogin = (data) => {
         })
         .then(resp => resp.json())
         .then(json => {
-            console.log('this', json)
             if (json.logged_in) {
-                // this.props.handleSuccessfulAuth(json)
                 dispatch({ type: 'FETCH_LOGIN', payload: json.user.username })
-                // this.props.history.push('/dashboard')
             } else {
                 alert('invalid credentials, please try again')
             }

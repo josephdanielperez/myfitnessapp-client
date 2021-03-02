@@ -6,19 +6,19 @@ class Nav extends Component {
 
     render() {
         return (
-    <nav>
-        <div id='nav'>
-            <div id='float-left'>
-            <Link to='/'>Home</Link>
-            <Link to='/workout'>Workout</Link>
-            <Link to='/exercises'>Exercises</Link>
-            </div>
+            <nav>
+                <div id='nav'>
+                    <Link to='/'>Home</Link>
+                    <Link to='/workout'>Workout</Link>
+                    <Link to='/exercises'>Exercises</Link>
 
-            <div id='float-right'>
-                <p>{this.props.user}</p>
-            </div>
-        </div>
-    </nav>
+                    {this.props.loggedInStatus === 'LOGGED_IN' &&
+                        <div id='float-right'>
+                            <p>Logged in as: {this.props.user}</p>
+                        </div>
+                    }
+                </div>
+            </nav>
         )
     }
 }
@@ -26,7 +26,8 @@ class Nav extends Component {
 const mapStateToProps = state => {
     return {
         splits: state.splits,
-        user: state.user
+        user: state.user,
+        loggedInStatus: state.loggedInStatus
     }
 }
 

@@ -174,9 +174,7 @@ a:hover {
 /* NAV BAR */
 #nav {
     background-color: #ffffff;
-    display: inline-flex;
-    text-align: center;
-    /* float: none; */
+    overflow: hidden;
     width: 100%;
     margin: 0;
     padding: 0;
@@ -195,12 +193,15 @@ a:hover {
     text-decoration: none;
     transition: all 0.25s ease;
 }
-#float-left {
+
+#nav a {
     float: left;
+    text-align: center;
 }
 
 #float-right {
     float: right;
+    font-style: italic;
 }
 
 
