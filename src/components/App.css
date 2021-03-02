@@ -248,7 +248,7 @@ img {
     text-align: center;
 }
 
-#register-login button {
+#register-login-button {
     background-color: #1F618D;
     color: #ffffff;
     border: 2px solid #1F618D;
@@ -282,7 +282,15 @@ img {
     margin: 2rem 0;
 }
 
-#login-register-form button {
-    margin: 1rem 0 0 0;
+#login-button, #register-button {
+    background-color: #1F618D;
+    color: #ffffff;
+    border: 2px solid #1F618D;
+    padding: 0.5rem 0.67rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
     font-size: 16px;
+    margin: .5rem;
+    cursor: pointer;
 }
