@@ -34,38 +34,19 @@ class Login extends Component {
         }
 
         this.props.fetchLogin(data);
-
-        // fetch('http://localhost:3000/sessions', {
-        //     credentials: 'include',
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'accept': 'application/json'
-        //     },
-        //     body: JSON.stringify(data)
-        // })
-        // .then(resp => resp.json())
-        // .then(json => {
-        //     if (json.logged_in) {
-        //         this.props.handleSuccessfulAuth(json)
-        //     } else {
-        //         alert('invalid credentials, please try again')
-        //     }
-        // })
     }
 
     render() {
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <label>Username: </label>
-                    <input type='username' name='username' value={this.state.username} onChange={this.handleChange} required /><br />
+            <div id='content'>
+                <div id='container'>
+                    <form onSubmit={this.handleSubmit}>
+                        <input type='username' placeholder='Username' name='username' value={this.state.username} onChange={this.handleChange} required /><br />
+                        <input type='password' placeholder='Password' name='password' value={this.state.password} onChange={this.handleChange} required /><br />
 
-                    <label>Password: </label>
-                    <input type='password' name='password' value={this.state.password} onChange={this.handleChange} required /><br />
-
-                    <button type='submit'>login</button>
-                </form>
+                        <button type='submit'>login</button>
+                    </form>
+                </div>
             </div>
         )
     }

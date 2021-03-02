@@ -176,7 +176,7 @@ a:hover {
     background-color: #ffffff;
     overflow: hidden;
     width: 100%;
-    margin: 0;
+    margin: 0 0 3rem 0;
     padding: 0;
     box-shadow: 0 0 10px 2px;
 }
@@ -232,6 +232,7 @@ a:hover {
 /* FOOTER STYLING */
 #footer {
     color: #ffffff;
+    margin: 3rem 0 0 0;
 }
 
 /* GIF STYLING */
@@ -239,4 +240,17 @@ img {
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+/* HOME PAGE STYLING */
+#register-login {
+    margin: 1.5rem;
+    text-align: center;
+}
+
+#register-login a {
+    margin: 1rem;
+    padding: 0;
+    color: #000000;
+    font-weight: bold;
 }

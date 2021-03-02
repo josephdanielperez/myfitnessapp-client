@@ -21,8 +21,9 @@ class Dashboard extends Component {
             <div id='content'>
                 <div id='container'>
                     <img src='https://media.giphy.com/media/Ae9RmQOtH8vmXCMlc4/giphy.gif' alt='MyFitnessApp Home Page'/>
-                    <h3>FITNESS MADE SIMPLE</h3>
-                    <button onClick={this.handleLogoutClick}>logout</button>
+                    <div id='register-login'>
+                        <h4 onClick={this.handleLogoutClick}>logout</h4>
+                    </div>
                 </div>
             </div>
         )

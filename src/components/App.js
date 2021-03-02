@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Switch, Route } from 'react-router-dom'
+import { Redirect } from 'react-router'
 import './App.css'
 
 import { checkLoginStatus, fetchSplits } from '../actions/allActions'
@@ -8,6 +9,9 @@ import { checkLoginStatus, fetchSplits } from '../actions/allActions'
 import Header from './Header'
 import Footer from './Footer'
 import Nav from './Nav'
+
+import Registration from './Registration'
+import Login from './Login'
 
 import Home from './Home'
 import Dashboard from './Dashboard'
@@ -37,15 +41,18 @@ class App extends Component {
         if (this.props.loggedInStatus === 'NOT_LOGGED_IN') {
             return (
                 <div>
-                <Header />
-                <Nav />
-                <br /><br /><br />
-                <Switch>
-                    <Route exact path='/' component={ Home } />
-                    <Route path='*' component={ NotLoggedIn } />
-                </Switch>
-                <br /><br /><br />
-                <Footer />
+                    <Header />
+                    <Nav />
+                    <Switch>
+                        <Route exact path='/' component={ Home } />
+                        <Route exact path='/register' component={ Registration } />
+                        <Route exact path='/login' component={ Login } />
+                        <Route exact path='/workout' component={ NotLoggedIn } />
+                        <Route exact path='/exercises' component={ NotLoggedIn } />
+                        <Route exact path='/exercises/:id' component={ NotLoggedIn }/>
+                        <Route path='*' component={ NotFound } />
+                    </Switch>
+                    <Footer />
                 </div>
             )
         }
@@ -54,18 +61,15 @@ class App extends Component {
             <div>                
                 <Header />
                 <Nav />
-                <br /><br /><br />
                 <Switch>
                     <Route exact path='/' component={ Dashboard } />
-
-                    <Route exact path='/sad' component={ Home } />
-
+                    <Route exact path='/register'>{ <Redirect to='/' /> }</Route>
+                    <Route exact path='/login'>{ <Redirect to='/' /> }</Route>
                     <Route exact path='/workout' component={ WorkoutContainer } />
                     <Route exact path='/exercises' component={ ExercisesContainer } />
                     <Route exact path='/exercises/:id' component={ Exercises }/>
                     <Route path='*' component={ NotFound } />
                 </Switch>
-                <br /><br /><br />
                 <Footer />
             </div>
         );

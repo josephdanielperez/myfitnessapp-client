@@ -41,19 +41,16 @@ class Registration extends Component {
 
     render() {
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <label>Username: </label>
-                    <input type='username' name='username' value={this.state.username} onChange={this.handleChange} required /><br />
+            <div id='content'>
+                <div id='container'>
+                    <form onSubmit={this.handleSubmit}>
+                        <input type='username' placeholder='Username' name='username' value={this.state.username} onChange={this.handleChange} required /><br />
+                        <input type='password' placeholder='Password' name='password' value={this.state.password} onChange={this.handleChange} required /><br />
+                        <input type='password' placeholder='Confirm Password' name='password_confirmation' value={this.state.password_confirmation} onChange={this.handleChange} required /><br />
 
-                    <label>Password: </label>
-                    <input type='password' name='password' value={this.state.password} onChange={this.handleChange} required /><br />
-
-                    <label>Password Confirmation: </label>
-                    <input type='password' name='password_confirmation' value={this.state.password_confirmation} onChange={this.handleChange} required /><br />
-
-                    <button type='submit'>register</button>
-                </form>
+                        <button type='submit'>register</button>
+                    </form>
+                </div>
             </div>
         )
     }
