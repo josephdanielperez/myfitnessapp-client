@@ -175,12 +175,12 @@ a:hover {
 #nav {
     background-color: #ffffff;
     display: inline-flex;
-    float: none;
+    text-align: center;
+    /* float: none; */
     width: 100%;
     margin: 0;
     padding: 0;
     box-shadow: 0 0 10px 2px;
-    list-style: none;
 }
 
 #nav a:visited, #nav a:link {
@@ -194,6 +194,13 @@ a:hover {
     background: #1F618D;
     text-decoration: none;
     transition: all 0.25s ease;
+}
+#float-left {
+    float: left;
+}
+
+#float-right {
+    float: right;
 }
 
 

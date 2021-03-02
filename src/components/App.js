@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import { Switch, Route } from 'react-router-dom'
 import './App.css'
+
+import { checkLoginStatus, fetchSplits } from '../actions/allActions'
 
 import Header from './Header'
 import Footer from './Footer'
@@ -28,7 +31,9 @@ class App extends Component {
     }
 
     componentDidMount() {
-        this.checkLoginStatus();
+        this.props.checkLoginStatus();
+        this.props.fetchSplits()
+        // this.checkLoginStatus();
     }
 
     checkLoginStatus() {
@@ -91,4 +96,12 @@ class App extends Component {
     }
 }
 
-export default App;
+const mapStateToProps = state => {
+    return {
+        splits: state.splits,
+        user: state.user,
+        loggedInStatus: state.loggedInStatus
+    }
+}
+
+export default connect(mapStateToProps, { checkLoginStatus, fetchSplits })(App);

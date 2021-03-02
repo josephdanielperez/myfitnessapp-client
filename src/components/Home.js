@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
+import { fetchLogout } from '../actions/allActions'
 import Registration from './Registration'
 import Login from './Login'
 
@@ -17,11 +20,13 @@ class Home extends Component {
     }
 
     handleLogoutClick() {
-        fetch('http://localhost:3000/logout', {
-            credentials: 'include',
-            method: 'DELETE'
-        })
-        .then(resp => this.props.handleLogout())
+        this.props.fetchLogout()
+
+        // fetch('http://localhost:3000/logout', {
+        //     credentials: 'include',
+        //     method: 'DELETE'
+        // })
+        // .then(resp => this.props.handleLogout())
     }
 
     render() {
@@ -39,4 +44,11 @@ class Home extends Component {
 
 }
 
-export default Home;
+const mapStateToProps = state => {
+    return {
+        user: state.user,
+        loggedInStatus: state.loggedInStatus
+    }
+}
+
+export default connect(mapStateToProps, { fetchLogout })(Home);

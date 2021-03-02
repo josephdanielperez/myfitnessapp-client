@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+
+import { fetchRegistration } from '../actions/allActions'
 
 class Registration extends Component {
 
@@ -33,23 +36,25 @@ class Registration extends Component {
             }
         }
 
-        fetch('http://localhost:3000/registrations', {
-            credentials: 'include',
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'accept': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-        .then(resp => resp.json())
-        .then(json => {
-            if (json.status === 'created') {
-                this.props.handleSuccessfulAuth(json.user)
-            } else {
-                alert('Username is either taken or password fields did not match. Please try again.')
-            }
-        })
+        this.props.fetchRegistration(data);
+
+        // fetch('http://localhost:3000/registrations', {
+        //     credentials: 'include',
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         'accept': 'application/json'
+        //     },
+        //     body: JSON.stringify(data)
+        // })
+        // .then(resp => resp.json())
+        // .then(json => {
+        //     if (json.status === 'created') {
+        //         this.props.handleSuccessfulAuth(json.user)
+        //     } else {
+        //         alert('Username is either taken or password fields did not match. Please try again.')
+        //     }
+        // })
     }
 
     render() {
@@ -73,4 +78,11 @@ class Registration extends Component {
 
 }
 
-export default Registration
+const mapStateToProps = state => {
+    return {
+        user: state.user,
+        loggedInStatus: state.loggedInStatus
+    }
+}
+
+export default connect(mapStateToProps, { fetchRegistration })(Registration);

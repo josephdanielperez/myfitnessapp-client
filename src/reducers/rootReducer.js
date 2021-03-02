@@ -29,6 +29,12 @@ export const rootReducer = (state = {
                 loggedInStatus: 'LOGGED_IN'
             }
 
+        case 'LOGOUT':
+            return {
+                user: '',
+                loggedInStatus: 'NOT_LOGGED_IN'
+            }
+
         default:
             return state
     }
