@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Switch, Route } from 'react-router-dom'
-import { Redirect } from 'react-router'
 import './App.css'
 
 import { checkLoginStatus, fetchSplits } from '../actions/allActions'
@@ -9,9 +8,6 @@ import { checkLoginStatus, fetchSplits } from '../actions/allActions'
 import Header from './Header'
 import Footer from './Footer'
 import Nav from './Nav'
-
-import Registration from './Registration'
-import Login from './Login'
 
 import Home from './Home'
 import Dashboard from './Dashboard'
@@ -45,8 +41,6 @@ class App extends Component {
                     <Nav />
                     <Switch>
                         <Route exact path='/' component={ Home } />
-                        <Route exact path='/register' component={ Registration } />
-                        <Route exact path='/login' component={ Login } />
                         <Route exact path='/workout' component={ NotLoggedIn } />
                         <Route exact path='/exercises' component={ NotLoggedIn } />
                         <Route exact path='/exercises/:id' component={ NotLoggedIn }/>
@@ -63,8 +57,6 @@ class App extends Component {
                 <Nav />
                 <Switch>
                     <Route exact path='/' component={ Dashboard } />
-                    <Route exact path='/register'>{ <Redirect to='/' /> }</Route>
-                    <Route exact path='/login'>{ <Redirect to='/' /> }</Route>
                     <Route exact path='/workout' component={ WorkoutContainer } />
                     <Route exact path='/exercises' component={ ExercisesContainer } />
                     <Route exact path='/exercises/:id' component={ Exercises }/>

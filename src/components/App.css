@@ -249,8 +249,8 @@ img {
 }
 
 #register-login-button {
-    background-color: #1F618D;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #1F618D;
     border: 2px solid #1F618D;
     width: 7.5rem;
     padding: 0.75rem 1rem;
@@ -262,9 +262,9 @@ img {
     cursor: pointer;
 }
 
-#register-login button:hover, #register-login button:active {
-    background-color: #ffffff;
-    color: #1F618D;
+#register-login-button:hover {
+    background-color: #1F618D;
+    color: #ffffff;
     border: 2px solid #1F618D;
     transition: all 0.5s ease;
 }
@@ -282,9 +282,29 @@ img {
     margin: 2rem 0;
 }
 
-#login-button, #register-button {
+#login-register-form input {
+    width: 50%;
+    padding: 0.5rem 0.5rem;
+    margin: 0.25rem;
+    border: 1px solid #000000;
+}
+
+#login-button, #register-button, #logout-button {
     background-color: #1F618D;
     color: #ffffff;
+    border: 2px solid #1F618D;
+    padding: 0.5rem 0.67rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: .5rem;
+    cursor: pointer;
+}
+
+#login-button:hover, #register-button:hover, #logout-button:hover {
+    background-color: #ffffff;
+    color: #1F618D;
     border: 2px solid #1F618D;
     padding: 0.5rem 0.67rem;
     text-align: center;

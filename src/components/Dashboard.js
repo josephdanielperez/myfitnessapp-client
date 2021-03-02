@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 
 import { fetchLogout } from '../actions/allActions'
 
@@ -20,9 +19,9 @@ class Dashboard extends Component {
         return (
             <div id='content'>
                 <div id='container'>
-                    <img src='https://media.giphy.com/media/Ae9RmQOtH8vmXCMlc4/giphy.gif' alt='MyFitnessApp Home Page'/>
                     <div id='register-login'>
-                        <button onClick={this.handleLogoutClick}>logout</button>
+                        <h1>Hello, {this.props.user}</h1>
+                        <button id='logout-button' onClick={this.handleLogoutClick}>logout</button>
                     </div>
                 </div>
             </div>

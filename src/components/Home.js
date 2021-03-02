@@ -9,7 +9,7 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selected: ''
+            selected: 'register'
         }
     }
 
@@ -24,12 +24,11 @@ class Home extends Component {
             <div id='content'>
                 <div id='container'>
                     <div id='register-login'>
-                        {(this.state.selected === '') && <img src='https://media.giphy.com/media/Ae9RmQOtH8vmXCMlc4/giphy.gif' alt='MyFitnessApp Home Page'/>}
-                        {(this.state.selected === 'login') && <Login />}
-                        {(this.state.selected === 'register') && <Registration />}
+                        <button onClick={this.handleChange} id='register-login-button' value='register' >REGISTER</button>
+                        <button onClick={this.handleChange} id='register-login-button' value='login' >LOGIN</button>
 
-                        <button onClick={this.handleChange} id='register-login-button' value='register' >register</button>
-                        <button onClick={this.handleChange} id='register-login-button' value='login' >login</button>
+                        {(this.state.selected === 'register') && <Registration />}
+                        {(this.state.selected === 'login') && <Login />}
                     </div>
                 </div>
             </div>
