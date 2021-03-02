@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { Switch, Route, Redirect } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 import './App.css'
 
 import { checkLoginStatus, fetchSplits } from '../actions/allActions'
@@ -56,8 +56,10 @@ class App extends Component {
                 <Nav />
                 <br /><br /><br />
                 <Switch>
-                    <Route exact path='/' render={props => ( <Home {...props} handleLogin={this.handleLogin} handleLogout={this.handleLogout} loggedInStatus={this.state.loggedInStatus} /> )} />
-                    <Route exact path='/dashboard' render={props => ( <Dashboard {...props} loggedInStatus={this.state.loggedInStatus} /> )} />
+                    <Route exact path='/' component={ Dashboard } />
+
+                    <Route exact path='/sad' component={ Home } />
+
                     <Route exact path='/workout' component={ WorkoutContainer } />
                     <Route exact path='/exercises' component={ ExercisesContainer } />
                     <Route exact path='/exercises/:id' component={ Exercises }/>

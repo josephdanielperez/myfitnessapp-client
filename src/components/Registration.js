@@ -37,24 +37,6 @@ class Registration extends Component {
         }
 
         this.props.fetchRegistration(data);
-
-        // fetch('http://localhost:3000/registrations', {
-        //     credentials: 'include',
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'accept': 'application/json'
-        //     },
-        //     body: JSON.stringify(data)
-        // })
-        // .then(resp => resp.json())
-        // .then(json => {
-        //     if (json.status === 'created') {
-        //         this.props.handleSuccessfulAuth(json.user)
-        //     } else {
-        //         alert('Username is either taken or password fields did not match. Please try again.')
-        //     }
-        // })
     }
 
     render() {
@@ -80,6 +62,7 @@ class Registration extends Component {
 
 const mapStateToProps = state => {
     return {
+        splits: state.splits,
         user: state.user,
         loggedInStatus: state.loggedInStatus
     }

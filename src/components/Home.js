@@ -1,36 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { fetchLogout } from '../actions/allActions'
 import Registration from './Registration'
 import Login from './Login'
 
 class Home extends Component {
 
-    constructor(props) {
-        super(props);
-
-        this.handleSuccessfulAuth = this.handleSuccessfulAuth.bind(this);
-        this.handleLogoutClick = this.handleLogoutClick.bind(this);
-    }
-
-    handleSuccessfulAuth(data) {
-        this.props.handleLogin(data);
-        this.props.history.push('/dashboard')
-    }
-
-    handleLogoutClick() {
-        this.props.fetchLogout()
-    }
-
     render() {
         return (
             <div id='content'>
                 <div id='container'>
-                    <h1>Status: {this.props.loggedInStatus} </h1>
-                    <Registration handleSuccessfulAuth={this.handleSuccessfulAuth} />
-                    <Login handleSuccessfulAuth={this.handleSuccessfulAuth} />
-                    <button onClick={this.handleLogoutClick}>logout</button>
+                    <img src='https://media.giphy.com/media/Ae9RmQOtH8vmXCMlc4/giphy.gif' alt='MyFitnessApp Home Page'/>
+                    <h3>FITNESS MADE SIMPLE</h3>
+                    <Registration />
+                    <Login />
                 </div>
             </div>
         )
@@ -46,4 +29,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { fetchLogout })(Home);
+export default connect(mapStateToProps)(Home);
