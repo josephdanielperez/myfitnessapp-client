@@ -248,9 +248,41 @@ img {
     text-align: center;
 }
 
+#register-login button {
+    background-color: #1F618D;
+    color: #ffffff;
+    border: 2px solid #1F618D;
+    width: 7.5rem;
+    padding: 0.75rem 1rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: .5rem;
+    cursor: pointer;
+}
+
+#register-login button:hover, #register-login button:active {
+    background-color: #ffffff;
+    color: #1F618D;
+    border: 2px solid #1F618D;
+    transition: all 0.5s ease;
+}
+
 #register-login a {
     margin: 1rem;
     padding: 0;
     color: #000000;
     font-weight: bold;
+}
+
+/* LOGIN / REGISTER FORMS */
+
+#login-register-form {
+    margin: 2rem 0;
+}
+
+#login-register-form button {
+    margin: 1rem 0 0 0;
+    font-size: 16px;
 }
