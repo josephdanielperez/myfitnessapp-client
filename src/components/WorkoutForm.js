@@ -9,13 +9,13 @@ class WorkoutForm extends Component {
                 <form onSubmit={this.props.handleSubmit}>
 
                     <label>Select a split: </label>
-                    <select value={this.props.split} onChange={this.props.handleChange} name='split'>
+                    <select value={this.props.split} onChange={this.props.handleChange} name='split' id='workout-select'>
                         { this.props.splits.map(split => <option value={split.id} key={split.id}>{split.name}</option>) }
                     </select>
                     < br />< br />
                     
                     <label>Number of exercises you wish to complete: </label>
-                    <select value={this.props.state.length} onChange={this.props.handleChange} name='length'>
+                    <select value={this.props.state.length} onChange={this.props.handleChange} name='length' id='workout-select'>
                         <option value="3">3</option>
                         <option value="4">4</option>
                         <option value="5">5</option>

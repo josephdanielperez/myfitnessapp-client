@@ -13,7 +13,6 @@ h1 {
     justify-content: center;
     align-items: center;
     color: #ffffff;
-    text-shadow: 0 0 10px 2px;
 }
 
 h3 {
@@ -23,7 +22,6 @@ h3 {
     justify-content: center;
     align-items: center;
     color: #000000;
-    text-shadow: 0 0 10px 2px;
 }
 
 p {
@@ -49,11 +47,9 @@ ul {
 
 #container {
     width: 800px;
-    max-width: 80%;
+    max-width: 75%;
     background-color: #ffffff;
-    border-radius: 5px;
-    padding: 10px;
-    box-shadow: 0 0 10px 2px;
+    padding: 1.5rem;
 }
 
 #container h1 {
@@ -66,13 +62,13 @@ ul {
 }
 
 .btn {
-    border: 2px solid #000000;
+    border: 2px solid #1F618D;
     background-color: #1F618D;
-    border-radius: 5px;
     padding: 5px 10px;
     color: #ffffff;
     outline: none;
     cursor: pointer;
+    font-size: 16px;
 }
 
 .btn:hover {
@@ -110,8 +106,7 @@ ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 2px solid #000000;
-    border-radius: 5px;
+    border: 2px solid #1F618D;
     transition: all 0.5s ease;
 }
 
@@ -126,6 +121,7 @@ ul {
     padding: 1rem;
     cursor: pointer;
     font-size: 1rem;
+    font-size: 16px;
 }
 
 .complete-btn:hover {
@@ -148,6 +144,7 @@ ul {
     justify-content: center;
     align-items: center;
     margin: 1rem;
+    font-size: 16px;
 }
 
 a:link {
@@ -178,12 +175,11 @@ a:hover {
     width: 100%;
     margin: 0 0 3rem 0;
     padding: 0;
-    box-shadow: 0 0 10px 2px;
 }
 
 #nav a:visited, #nav a:link {
     color: #000000;
-    margin: 0;
+    margin: 2px;
     padding: 1rem;
 }
 
@@ -214,8 +210,7 @@ a:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 2px solid #000000;
-    border-radius: 5px;
+    border: 2px solid #1F618D;
     transition: all 0.5s ease;
 }
 
@@ -226,7 +221,6 @@ a:hover {
 /* HEADER STYLING */
 #header-content {
     text-align: center;
-    text-shadow: 2px 2px #000000;
 }
 
 /* FOOTER STYLING */
@@ -313,4 +307,10 @@ img {
     font-size: 16px;
     margin: .5rem;
     cursor: pointer;
+}
+
+/* WORKOUT FORM */
+
+#workout-select {
+    border: 1px solid #000000;
 }
