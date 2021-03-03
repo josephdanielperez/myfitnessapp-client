@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import WorkoutForm from './WorkoutForm'
-import Workout from './Workout'
+import WorkoutForm from '../components/WorkoutForm'
+import Workout from '../components/Workout'
 
 import { fetchSplits } from '../actions/allActions'
 

@@ -3,19 +3,19 @@ import { connect } from 'react-redux'
 import { Switch, Route } from 'react-router-dom'
 import './App.css'
 
-import { checkLoginStatus, fetchSplits } from '../actions/allActions'
+import { checkLoginStatus, fetchSplits } from './actions/allActions'
 
-import Header from './Header'
-import Footer from './Footer'
-import Nav from './Nav'
+import Header from './components/Header'
+import Footer from './components/Footer'
+import Nav from './components/Nav'
 
-import Home from './Home'
-import Dashboard from './Dashboard'
-import WorkoutContainer from './WorkoutContainer'
-import ExercisesContainer from './ExercisesContainer'
-import Exercises from './Exercises'
-import NotFound from './NotFound'
-import NotLoggedIn from './NotLoggedIn'
+import Home from './components/Home'
+import Dashboard from './components/Dashboard'
+import WorkoutContainer from './containers/WorkoutContainer'
+import ExercisesContainer from './containers/ExercisesContainer'
+import Exercises from './components/Exercises'
+import NotFound from './components/NotFound'
+import NotLoggedIn from './components/NotLoggedIn'
 
 class App extends Component {
 
