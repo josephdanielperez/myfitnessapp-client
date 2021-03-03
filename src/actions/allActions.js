@@ -1,18 +1,16 @@
 export const fetchSplits = () => {
-    return dispatch => {
+    return async dispatch => {
         dispatch({ type: 'LOADING_SPLITS' })
 
-        return fetch('http://localhost:3000/splits')
-        .then(resp => resp.json())
-        .then(splits => 
-            dispatch({type: 'FETCH_SPLITS', payload: splits})
-        )
+        const resp = await fetch('http://localhost:3000/splits')
+        const splits = await resp.json()
+        return dispatch({ type: 'FETCH_SPLITS', payload: splits })
     }
 }
 
 export const checkLoginStatus = () => {
-    return dispatch => {
-        return fetch('http://localhost:3000/logged_in', {
+    return async dispatch => {
+        const resp = await fetch('http://localhost:3000/logged_in', {
             credentials: 'include',
             method: 'GET',
             headers: {
@@ -20,14 +18,12 @@ export const checkLoginStatus = () => {
                 'accept': 'application/json'
             }
         })
-        .then(resp => resp.json())
-        .then(json => {
-            if (json.logged_in) {
-                dispatch({ type: 'FETCH_LOGIN', payload: json.user.username })
-            } else {
-                dispatch({ type: 'LOGOUT' })
-            }
-        })
+        const json = await resp.json()
+        if (json.logged_in) {
+            dispatch({ type: 'FETCH_LOGIN', payload: json.user.username })
+        } else {
+            dispatch({ type: 'LOGOUT' })
+        }
     }
 }
 
@@ -55,10 +51,10 @@ export const fetchRegistration = (data) => {
 }
 
 export const fetchLogin = (data) => {
-    return dispatch => {
+    return async dispatch => {
         dispatch({ type: 'LOADING_LOGIN' })
 
-        return fetch('http://localhost:3000/sessions', {
+        const resp = await fetch('http://localhost:3000/sessions', {
             credentials: 'include',
             method: 'POST',
             headers: {
@@ -66,25 +62,21 @@ export const fetchLogin = (data) => {
             },
             body: JSON.stringify(data)
         })
-        .then(resp => resp.json())
-        .then(json => {
-            if (json.logged_in) {
-                dispatch({ type: 'FETCH_LOGIN', payload: json.user.username })
-            } else {
-                alert('invalid credentials, please try again')
-            }
-        })
+        const json = await resp.json()
+        if (json.logged_in) {
+            dispatch({ type: 'FETCH_LOGIN', payload: json.user.username })
+        } else {
+            alert('invalid credentials, please try again')
+        }
     }
 }
 
 export const fetchLogout = () => {
-    return dispatch => {
-        return fetch('http://localhost:3000/logout', {
+    return async dispatch => {
+        const resp = await fetch('http://localhost:3000/logout', {
             credentials: 'include',
             method: 'DELETE'
         })
-        .then(resp => {
-            dispatch({ type: 'LOGOUT' })
-        })
+        dispatch({ type: 'LOGOUT' })
     }
 }
