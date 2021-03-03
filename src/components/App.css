@@ -12,7 +12,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #ffffff;
+    color: #ffffff
 }
 
 h3 {
@@ -21,7 +21,7 @@ h3 {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #000000;
+    color: #000000
 }
 
 p {
@@ -29,7 +29,7 @@ p {
     padding: 1rem;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center
 }
 
 ul {
