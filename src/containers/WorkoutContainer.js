@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import swal from 'sweetalert'
 
 import WorkoutForm from '../components/WorkoutForm'
 import Workout from '../components/Workout'
@@ -45,20 +44,14 @@ class WorkoutContainer extends Component {
     }
 
     handleReset = () => {
-        swal({
-            title: `Great job ${this.props.user}`,
-            text: 'See you for another workout soon!',
-            icon: 'success',
-            button: false
-        });
-
+        alert(`Great job ${this.props.user}! See you for another workout soon!`);
         this.setState({
             split: '1',
             length: '3',
             exercises: []
         })
     }
-
+  
     render() {
         if (!this.state.exercises.length) {
             return (
