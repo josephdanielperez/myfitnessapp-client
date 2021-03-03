@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import swal from 'sweetalert'
+
 import WorkoutForm from '../components/WorkoutForm'
 import Workout from '../components/Workout'
 
@@ -7,23 +9,20 @@ import { fetchSplits } from '../actions/allActions'
 
 class WorkoutContainer extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            split: '1',
-            length: '3',
-            exercises: []         
-        }
+    state = {
+        split: '1',
+        length: '3',
+        exercises: []
     }
 
     componentDidMount() {
-        this.props.fetchSplits();
+        this.props.fetchSplits()
     }
 
     handleChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value
-        });
+        })
     }
 
     handleSubmit = (e) => {
@@ -46,7 +45,13 @@ class WorkoutContainer extends Component {
     }
 
     handleReset = () => {
-        alert(`Great job ${this.props.user}! See you for another workout soon!`);
+        swal({
+            title: `Great job ${this.props.user}`,
+            text: 'See you for another workout soon!',
+            icon: 'success',
+            button: false
+        });
+
         this.setState({
             split: '1',
             length: '3',
@@ -81,5 +86,5 @@ const mapStateToProps = state => {
         user: state.user
     }
 }
-  
+
 export default connect(mapStateToProps, { fetchSplits })(WorkoutContainer);

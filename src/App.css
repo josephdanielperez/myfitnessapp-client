@@ -304,6 +304,7 @@ img {
     text-align: center;
     text-decoration: none;
     display: inline-block;
+    transition: all 0.5s ease;
     font-size: 16px;
     margin: .5rem;
     cursor: pointer;
@@ -313,4 +314,18 @@ img {
 
 #workout-select {
     border: 1px solid #000000;
+}
+
+/* SWAL STYLING */
+.swal-modal {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-radius: 0%;
+}
+
+.swal-button {
+    border-radius: 0;
+    background-color: #1F618D;
+    color: #ffffff;
+    font-size: 16px;
+    border: 2px solid #1F618D;
 }
