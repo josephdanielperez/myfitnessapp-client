@@ -58,7 +58,7 @@ class WorkoutContainer extends Component {
             exercises: []
         })
     }
-  
+
     render() {
         if (!this.state.exercises.length) {
             return (
