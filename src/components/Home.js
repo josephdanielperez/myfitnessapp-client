@@ -1,16 +1,12 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 
 import Login from './Login'
 import Registration from './Registration'
 
 class Home extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            selected: 'register'
-        }
+    state = {
+        selected: 'register'
     }
 
     handleChange = (e) => {
@@ -37,12 +33,4 @@ class Home extends Component {
 
 }
 
-const mapStateToProps = state => {
-    return {
-        splits: state.splits,
-        user: state.user,
-        loggedInStatus: state.loggedInStatus
-    }
-}
-
-export default connect(mapStateToProps)(Home);
+export default Home

@@ -29,11 +29,11 @@ class Login extends Component {
         const data = {
             user: {
                 username: this.state.username,
-                password: this.state.password,
+                password: this.state.password
             }
         }
 
-        this.props.fetchLogin(data);
+        this.props.fetchLogin(data)
     }
 
     render() {
@@ -51,11 +51,4 @@ class Login extends Component {
 
 }
 
-const mapStateToProps = state => {
-    return {
-        user: state.user,
-        loggedInStatus: state.loggedInStatus
-    }
-}
-
-export default connect(mapStateToProps, { fetchLogin })(Login);
+export default connect(null, { fetchLogin })(Login)
