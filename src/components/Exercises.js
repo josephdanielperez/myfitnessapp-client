@@ -18,7 +18,7 @@ class Exercises extends Component {
             this.setState({
                 exercises: split.exercises,
                 split: split.split.name
-            });
+            })
         })
     }
 

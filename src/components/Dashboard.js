@@ -31,9 +31,7 @@ class Dashboard extends Component {
 
 const mapStateToProps = state => {
     return {
-        splits: state.splits,
-        user: state.user,
-        loggedInStatus: state.loggedInStatus
+        user: state.user
     }
 }
 
