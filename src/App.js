@@ -29,7 +29,7 @@ class App extends Component {
     }
 
     componentDidMount() {
-        this.props.checkLoginStatus();
+        this.props.checkLoginStatus()
         this.props.fetchSplits()
     }
 
