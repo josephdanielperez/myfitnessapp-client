@@ -8,5 +8,4 @@ const NotLoggedIn = () =>
         </div>
     </div>
 
-
-export default NotLoggedIn;
+export default NotLoggedIn
