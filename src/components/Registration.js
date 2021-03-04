@@ -11,18 +11,17 @@ class Registration extends Component {
         this.state = {
             username: '',
             password: '',
-            password_confirmation: '',
-            registrationErrors: ''
+            password_confirmation: ''
         }
 
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleChange = this.handleChange.bind(this)
     }
 
     handleChange(e) {
         this.setState({
             [e.target.name]: e.target.value
-        });
+        })
     }
 
     handleSubmit(e) {
@@ -55,12 +54,12 @@ class Registration extends Component {
 
 }
 
-const mapStateToProps = state => {
-    return {
-        splits: state.splits,
-        user: state.user,
-        loggedInStatus: state.loggedInStatus
-    }
-}
+// const mapStateToProps = state => {
+//     return {
+//         splits: state.splits,
+//         user: state.user,
+//         loggedInStatus: state.loggedInStatus
+//     }
+// }
 
-export default connect(mapStateToProps, { fetchRegistration })(Registration);
+export default connect(null, { fetchRegistration })(Registration)

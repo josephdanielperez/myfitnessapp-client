@@ -13,14 +13,14 @@ class Login extends Component {
             password: ''
         }
 
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleChange = this.handleChange.bind(this)
     }
 
     handleChange(e) {
         this.setState({
             [e.target.name]: e.target.value
-        });
+        })
     }
 
     handleSubmit(e) {
