@@ -54,12 +54,4 @@ class Registration extends Component {
 
 }
 
-// const mapStateToProps = state => {
-//     return {
-//         splits: state.splits,
-//         user: state.user,
-//         loggedInStatus: state.loggedInStatus
-//     }
-// }
-
 export default connect(null, { fetchRegistration })(Registration)
