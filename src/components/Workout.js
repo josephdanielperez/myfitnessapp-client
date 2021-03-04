@@ -5,12 +5,12 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons'
 class Workout extends Component {
 
     completeExercise(e) {
-        const check = e.target;
-        check.parentElement.classList.toggle('completed');
+        const check = e.target
+        check.parentElement.classList.toggle('completed')
 
         const workouts = document.getElementsByClassName('workout')
-        const completedWorkouts = document.getElementsByClassName('completed');
-        const finishButton = document.getElementById('finish-workout');
+        const completedWorkouts = document.getElementsByClassName('completed')
+        const finishButton = document.getElementById('finish-workout')
 
         if (workouts.length === completedWorkouts.length) {
             finishButton.classList.remove('hide')
@@ -43,4 +43,4 @@ class Workout extends Component {
     
 }
   
-export default Workout;
+export default Workout
