@@ -32,4 +32,4 @@ class WorkoutForm extends Component {
 
 }
 
-export default WorkoutForm;
+export default WorkoutForm
