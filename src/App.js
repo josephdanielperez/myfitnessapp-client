@@ -60,7 +60,6 @@ class App extends Component {
                     <Route exact path='/workout' component={ WorkoutContainer } />
                     <Route exact path='/exercises' component={ ExercisesContainer } />
                     <Route path='/exercises/:id' render={routerProps => (<Exercises {...routerProps} splits={this.props.splits} />)} />
-                    {/* <Route exact path='/exercises/:id' component={ Exercises }/> */}
                     <Route path='*' component={ NotFound } />
                 </Switch>
                 <Footer />
