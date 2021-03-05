@@ -70,7 +70,7 @@ export const fetchLogin = (data) => {
 }
 
 export const fetchLogout = () => {
-    return dispatch => {
+    return (dispatch) => {
         fetch('http://localhost:3000/logout', {
             credentials: 'include',
             method: 'DELETE'
