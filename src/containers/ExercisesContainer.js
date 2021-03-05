@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 
 import { fetchSplits } from '../actions/allActions'
 
+import Exercises from '../components/Exercises'
+
 class ExercisesContainer extends Component {
 
     componentDidMount() {

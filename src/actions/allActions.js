@@ -29,8 +29,8 @@ export const checkLoginStatus = () => {
 
 
 export const fetchRegistration = (data) => {
-    return dispatch => {
-        fetch('http://localhost:3000/registrations', {
+    return async dispatch => {
+         const resp = await fetch('http://localhost:3000/registrations', {
             credentials: 'include',
             method: 'POST',
             headers: {
@@ -39,14 +39,12 @@ export const fetchRegistration = (data) => {
             },
             body: JSON.stringify(data)
         })
-        .then(resp => resp.json())
-        .then(json => {
-            if (json.status === 'created') {
-                dispatch({ type: 'FETCH_LOGIN', payload: json.user.username })
-            } else {
-                alert('Username is either taken or password fields did not match. Please try again.')
-            }
-        })
+        const json = await resp.json()
+        if (json.status === 'created') {
+            dispatch({ type: 'FETCH_LOGIN', payload: json.user.username })
+        } else {
+            alert('Username is either taken or password fields did not match. Please try again.')
+        }
     }
 }
 
@@ -72,8 +70,8 @@ export const fetchLogin = (data) => {
 }
 
 export const fetchLogout = () => {
-    return async dispatch => {
-        const resp = await fetch('http://localhost:3000/logout', {
+    return dispatch => {
+        fetch('http://localhost:3000/logout', {
             credentials: 'include',
             method: 'DELETE'
         })

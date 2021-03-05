@@ -59,7 +59,8 @@ class App extends Component {
                     <Route exact path='/' component={ Dashboard } />
                     <Route exact path='/workout' component={ WorkoutContainer } />
                     <Route exact path='/exercises' component={ ExercisesContainer } />
-                    <Route exact path='/exercises/:id' component={ Exercises }/>
+                    <Route path='/exercises/:id' render={routerProps => (<Exercises {...routerProps} splits={this.props.splits} />)} />
+                    {/* <Route exact path='/exercises/:id' component={ Exercises }/> */}
                     <Route path='*' component={ NotFound } />
                 </Switch>
                 <Footer />
