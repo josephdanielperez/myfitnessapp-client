@@ -80,4 +80,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { fetchSplits })(WorkoutContainer);
+export default connect(mapStateToProps, { fetchSplits })(WorkoutContainer)
