@@ -40,4 +40,4 @@ export const rootReducer = (state = {
     }
 }
 
-export default rootReducer;
+export default rootReducer
