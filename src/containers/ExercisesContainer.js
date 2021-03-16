@@ -1,22 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 
 import { fetchSplits } from '../actions/allActions'
 
-class ExercisesContainer extends Component {
+import Split from '../components/Split'
 
-    state = {}
+class ExercisesContainer extends Component {
 
     componentDidMount() {
         this.props.fetchSplits()
-    }
-
-    handleClick = (e) => {
-        const item = e.target
-
-        console.log(item.innerHTML)
-        item.innerHTML = `${Number(item.innerHTML + 1)}`
     }
   
     render() {
@@ -26,16 +18,7 @@ class ExercisesContainer extends Component {
                     <div id='workout-div'>
                         <h1>Splits</h1>
                         <ul>
-                            { this.props.splits.map(split =>
-        
-                                <div id='split' key={split.id}>
-                                    
-                                    <li id='split-item'>
-                                        <Link to={`/exercises/${split.id}`}>{split.name}</Link>
-                                    </li>
-                                    <button className='complete-btn' onClick={this.handleClick}>1</button>
-                                </div>
-                            ) }
+                            { this.props.splits.map(split => <Split split={split} />) }
                         </ul>
                     </div>
                 </div>
