@@ -170,9 +170,16 @@ a:hover {
 #nav {
     background-color: #ffffff;
     overflow: hidden;
-    width: 100%;
+    width: 100%; 
     margin: 0 0 3rem 0;
     padding: 0
+}
+
+#nav-content {
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+    max-width: 1000px
 }
 
 #nav a:visited, #nav a:link {

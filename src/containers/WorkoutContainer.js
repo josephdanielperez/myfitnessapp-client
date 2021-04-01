@@ -30,7 +30,8 @@ class WorkoutContainer extends Component {
         fetch(`http://localhost:3000/splits/${this.state.split}`)
         .then(resp => resp.json())
         .then(split => {
-            let currentIndex = split.exercises.length, temporaryValue, randomIndex;
+            let currentIndex = split.exercises.length;
+            let temporaryValue, randomIndex;
             while (0 !== currentIndex) {
                 randomIndex = Math.floor(Math.random() * currentIndex);
                 currentIndex -= 1;

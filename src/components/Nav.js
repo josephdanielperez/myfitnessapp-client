@@ -8,15 +8,18 @@ class Nav extends Component {
         return (
             <nav>
                 <div id='nav'>
-                    <Link to='/'>Home</Link>
-                    <Link to='/workout'>Workout</Link>
-                    <Link to='/exercises'>Exercises</Link>
+                    <div id='nav-content'>
+                        <Link to='/'>Home</Link>
+                        <Link to='/workout'>Workout</Link>
+                        <Link to='/exercises'>Exercises</Link>
 
-                    {this.props.loggedInStatus === 'LOGGED_IN' &&
-                        <div id='float-right'>
-                            <p>Logged in as: {this.props.user}</p>
-                        </div>
-                    }
+                        {this.props.loggedInStatus === 'LOGGED_IN' &&
+                            <div id='float-right'>
+                                <p>Logged in as: {this.props.user}</p>
+                            </div>
+                        }
+
+                    </div>
                 </div>
             </nav>
             
