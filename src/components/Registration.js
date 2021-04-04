@@ -35,7 +35,7 @@ class Registration extends Component {
             }
         }
 
-        this.props.fetchRegistration(data);
+        this.props.fetchRegistration(data)
     }
 
     render() {
