@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 
 import { fetchSplits } from '../actions/allActions'
 
-import Split from '../components/Split'
+import Exercises from '../components/Exercises'
+
 
 class ExercisesContainer extends Component {
 
@@ -13,16 +14,7 @@ class ExercisesContainer extends Component {
   
     render() {
         return(
-            <div id='content'>
-                <div id='container'>
-                    <div id='workout-div'>
-                        <h1>Splits</h1>
-                        <ul>
-                            { this.props.splits.map(split => <Split split={split} />) }
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <Exercises splits={this.props.splits} />
         )
     }
 }

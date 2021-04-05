@@ -3,23 +3,27 @@ import React, { Component } from 'react'
 class Exercises extends Component {
 
     state = {
+        id: '1',
         exercises: [],
-        split: '',
     }
     
     componentDidMount() {
         this.fetchSplitExercises()
     }
 
-    fetchSplitExercises = () => {
-        fetch(`http://localhost:3000/splits/${this.props.match.params.id}`)
+    fetchSplitExercises() {
+        fetch(`http://localhost:3000/splits/${this.state.id}`)
         .then(resp => resp.json())
         .then(split => {
             this.setState({
-                exercises: split.exercises,
-                split: split.split.name
-            });
+                exercises: split.exercises
+            })
         })
+    }
+
+    handleChange = (e) => {
+        this.setState({ [e.target.name]: e.target.value })
+        setTimeout(() => this.fetchSplitExercises(), 0)
     }
 
     render() {
@@ -27,7 +31,12 @@ class Exercises extends Component {
             <div id='content'>
                 <div id='container'>
                     <div id='workout-div'>
-                        <h1>{this.state.split}</h1>
+                        <div id='exercises-select-wrapper'>
+                            <select value={this.state.id} onChange={this.handleChange} name='id' id='exercises-select'>
+                                { this.props.splits.map(split => <option value={split.id} key={split.id}>{split.name}</option>) }                            
+                            </select>
+                        </div>
+
                         <ul>
                             { this.state.exercises.map(exercise =>
                                 <div key={exercise.id} id='split'>
@@ -44,5 +53,5 @@ class Exercises extends Component {
     }
     
 }
-  
+
 export default Exercises

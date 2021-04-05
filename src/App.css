@@ -320,3 +320,16 @@ img {
 #workout-select {
     border: 1px solid #000000
 }
+
+#exercises-select-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+#exercises-select {
+    font-size: xxx-large;
+    font-weight: bold;
+    text-align-last: center;
+    margin: 25px;
+    border: none;
+}
