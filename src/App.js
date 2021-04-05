@@ -13,7 +13,6 @@ import Home from './components/Home'
 import Dashboard from './components/Dashboard'
 import WorkoutContainer from './containers/WorkoutContainer'
 import ExercisesContainer from './containers/ExercisesContainer'
-import Exercises from './components/Exercises'
 import NotFound from './components/NotFound'
 import NotLoggedIn from './components/NotLoggedIn'
 
@@ -43,7 +42,6 @@ class App extends Component {
                         <Route exact path='/' component={ Home } />
                         <Route exact path='/workout' component={ NotLoggedIn } />
                         <Route exact path='/exercises' component={ NotLoggedIn } />
-                        <Route exact path='/exercises/:id' component={ NotLoggedIn }/>
                         <Route path='*' component={ NotFound } />
                     </Switch>
                     <Footer />
@@ -59,7 +57,6 @@ class App extends Component {
                     <Route exact path='/' component={ Dashboard } />
                     <Route exact path='/workout' component={ WorkoutContainer } />
                     <Route exact path='/exercises' component={ ExercisesContainer } />
-                    <Route path='/exercises/:id' component={ Exercises } />
                     <Route path='*' component={ NotFound } />
                 </Switch>
                 <Footer />
