@@ -8,6 +8,27 @@ export const fetchSplits = () => {
     }
 }
 
+// export const fetchWorkout = (split, length) => {
+//     let workout = []
+
+//     fetch(`http://localhost:3000/splits/${split}`)
+//     .then(resp => resp.json())
+//     .then(split => {
+//         let currentIndex = split.exercises.length;
+//         let temporaryValue, randomIndex;
+//         while (0 !== currentIndex) {
+//             randomIndex = Math.floor(Math.random() * currentIndex);
+//             currentIndex -= 1;
+
+//             temporaryValue = split.exercises[currentIndex];
+//             split.exercises[currentIndex] = split.exercises[randomIndex];
+//             split.exercises[randomIndex] = temporaryValue;
+//         }
+//         split.exercises.slice(0, length).forEach(exercise => workout.push(exercise));
+//     })
+//     return workout
+// }
+
 export const checkLoginStatus = () => {
     return async dispatch => {
         const resp = await fetch('http://localhost:3000/logged_in', {
@@ -26,7 +47,6 @@ export const checkLoginStatus = () => {
         }
     }
 }
-
 
 export const fetchRegistration = (data) => {
     return async dispatch => {
