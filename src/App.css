@@ -6,6 +6,13 @@ body {
     min-height: 100%
 }
 
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 h1 {
     margin: 0;
     padding: 25px;
@@ -38,11 +45,10 @@ ul {
 }
 
 #content {
-    margin: 0;
-    padding: 0;
+    flex: 1;
     display: flex;
     justify-content: center;
-    align-items: center
+    align-items: flex-start;
 }
 
 #container {
@@ -231,7 +237,7 @@ a:hover {
 /* FOOTER STYLING */
 #footer {
     color: #ffffff;
-    margin: 3rem 0 0 0
+    margin: 3rem 0;
 }
 
 /* GIF STYLING */

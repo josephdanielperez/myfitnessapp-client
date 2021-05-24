@@ -35,7 +35,7 @@ class App extends Component {
     render() {
         if (this.props.loggedInStatus === 'NOT_LOGGED_IN') {
             return (
-                <div>
+                <>
                     <Header />
                     <Nav />
                     <Switch>
@@ -45,12 +45,12 @@ class App extends Component {
                         <Route path='*' component={ NotFound } />
                     </Switch>
                     <Footer />
-                </div>
+                </>
             )
         }
 
         return (
-            <div>                
+            <>                
                 <Header />
                 <Nav />
                 <Switch>
@@ -60,7 +60,7 @@ class App extends Component {
                     <Route path='*' component={ NotFound } />
                 </Switch>
                 <Footer />
-            </div>
+            </>
         );
     }
 }
